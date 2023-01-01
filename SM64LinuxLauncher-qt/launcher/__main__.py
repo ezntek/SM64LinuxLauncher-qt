@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt6 import QtWidgets
 import json
 import os
 from uic.main_window_ui import Ui_MainWindow

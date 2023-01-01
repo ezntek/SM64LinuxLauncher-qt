@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt6 import QtWidgets
 from uic.build_new_ui import Ui_BuildNewDialog
 from uic.select_baserom_ui import Ui_BaseromSelectDialog
 
@@ -33,7 +33,7 @@ class BuildNewDialog(QtWidgets.QDialog):
         picker = QtWidgets.QFileDialog(self)
 
         # configure and run
-        picker.setFileMode(QtWidgets.QFileDialog.FileMode.DirectoryOnly)
+        picker.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
         picker.exec()
 
         # set the lineEdit content to the picker result
@@ -45,7 +45,7 @@ class BuildNewDialog(QtWidgets.QDialog):
         picker = QtWidgets.QFileDialog(self)
 
         # configure and exec
-        picker.setFileMode(QtWidgets.QFileDialog.FileMode.DirectoryOnly)
+        picker.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
         picker.exec()
 
         # set the lineEdit content to the chosen folder
