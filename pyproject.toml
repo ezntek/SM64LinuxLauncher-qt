@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sm64linuxlauncher-qt"
+version = "0.1.0"
+description = "A simple launcher / building tool for the Super Mario 64 PC Port."
+authors = ["ezntek <easontekreviews@icloud.com>"]
+license = "GPLv3"
+readme = "README.md"
+packages = [{include = "sm64linuxlauncher_qt"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+PyQt5 = "^5.15.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

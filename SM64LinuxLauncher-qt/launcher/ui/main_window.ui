@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>779</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SM64LinuxLauncher</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="9" column="4">
+     <widget class="QListWidget" name="available_builds_list"/>
+    </item>
+    <item row="0" column="4">
+     <widget class="QPushButton" name="build_button">
+      <property name="text">
+       <string>Build New</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="2" rowspan="4">
+     <widget class="QListWidget" name="builds_list"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="play_button">
+      <property name="text">
+       <string>Play</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>779</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="action_quit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <action name="action_quit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>build_button</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>build_new()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>440</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>427</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>play_button</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>play_selected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>456</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>425</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>build_new()</slot>
+  <slot>play_selected()</slot>
+ </slots>
+</ui>

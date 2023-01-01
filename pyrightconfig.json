@@ -1,0 +1,9 @@
+{
+    "extraPaths": ["SM64LinuxLauncher-qt"],
+    "executionEnvironments": [
+        {
+            "root": "./SM64LinuxLauncher-qt/launcher",
+            "extraPaths": ["."]
+        }
+    ]
+}
