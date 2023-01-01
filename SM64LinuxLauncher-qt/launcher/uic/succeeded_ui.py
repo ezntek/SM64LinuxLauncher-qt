@@ -42,7 +42,7 @@ class Ui_BuildSucceededDialog(object):
 
     def retranslateUi(self, BuildSucceededDialog):
         _translate = QtCore.QCoreApplication.translate
-        BuildSucceededDialog.setWindowTitle(_translate("BuildSucceededDialog", "Dialog"))
+        BuildSucceededDialog.setWindowTitle(_translate("BuildSucceededDialog", "Build Suceeded!"))
         self.pushButton_2.setText(_translate("BuildSucceededDialog", "Yes"))
         self.l_succeeded.setText(_translate("BuildSucceededDialog", "Build Succeeded!"))
         self.l_playnow.setText(_translate("BuildSucceededDialog", "Would You like to play now?"))

@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>602</width>
-    <height>299</height>
+    <width>599</width>
+    <height>219</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Set Misc. Options</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0">
@@ -40,22 +40,17 @@
      </item>
      <item>
       <property name="text">
-       <string>6</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>8</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>12</string>
+       <string>10</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>15</string>
+       <string>12</string>
       </property>
      </item>
      <item>

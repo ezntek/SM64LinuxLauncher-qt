@@ -9,28 +9,28 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 29)
-        self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
+class Ui_BuildFailedDialog(object):
+    def setupUi(self, BuildFailedDialog):
+        BuildFailedDialog.setObjectName("BuildFailedDialog")
+        BuildFailedDialog.resize(400, 29)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(BuildFailedDialog)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(Dialog)
+        self.label = QtWidgets.QLabel(BuildFailedDialog)
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
-        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2 = QtWidgets.QLabel(BuildFailedDialog)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(BuildFailedDialog)
+        QtCore.QMetaObject.connectSlotsByName(BuildFailedDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, BuildFailedDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Build Failed!"))
-        self.label_2.setText(_translate("Dialog", "Please Try Again Later."))
+        BuildFailedDialog.setWindowTitle(_translate("BuildFailedDialog", "Build Failed"))
+        self.label.setText(_translate("BuildFailedDialog", "Build Failed!"))
+        self.label_2.setText(_translate("BuildFailedDialog", "Please Try Again Later."))

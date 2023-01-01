@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="1" colspan="2">
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="region_select">
      <item>
       <property name="text">
        <string>USA (us)</string>
@@ -34,28 +34,28 @@
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="browse_baserom">
      <property name="text">
       <string>Browse</string>
      </property>
     </widget>
    </item>
    <item row="5" column="2">
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="b_continue">
      <property name="text">
       <string>Continue</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="l_baserom_select">
      <property name="text">
       <string>Select A Base ROM</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="l_region_select">
      <property name="text">
       <string>Select the Region</string>
      </property>
@@ -75,7 +75,7 @@
     </spacer>
    </item>
    <item row="0" column="1">
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="baserom_path">
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -89,7 +89,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>browse_baserom</sender>
    <signal>clicked()</signal>
    <receiver>BaseromSelectDialog</receiver>
    <slot>select_baserom()</slot>
@@ -105,7 +105,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>b_continue</sender>
    <signal>clicked()</signal>
    <receiver>BaseromSelectDialog</receiver>
    <slot>b_continue()</slot>

@@ -9,16 +9,16 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(458, 29)
-        self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
+class Ui_BuildSucceededDialog(object):
+    def setupUi(self, BuildSucceededDialog):
+        BuildSucceededDialog.setObjectName("BuildSucceededDialog")
+        BuildSucceededDialog.resize(458, 29)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(BuildSucceededDialog)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(Dialog)
+        self.label = QtWidgets.QLabel(BuildSucceededDialog)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
-        self.label_2 = QtWidgets.QLabel(Dialog)
+        self.label_2 = QtWidgets.QLabel(BuildSucceededDialog)
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -26,11 +26,11 @@ class Ui_Dialog(object):
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(BuildSucceededDialog)
+        QtCore.QMetaObject.connectSlotsByName(BuildSucceededDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, BuildSucceededDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Building..."))
-        self.label_2.setText(_translate("Dialog", "Do Not close under any circumstances!"))
+        BuildSucceededDialog.setWindowTitle(_translate("BuildSucceededDialog", "Building"))
+        self.label.setText(_translate("BuildSucceededDialog", "Building..."))
+        self.label_2.setText(_translate("BuildSucceededDialog", "Do Not close under any circumstances!"))

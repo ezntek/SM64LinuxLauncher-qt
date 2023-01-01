@@ -9,23 +9,23 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(548, 465)
-        self.gridLayout = QtWidgets.QGridLayout(Dialog)
+class Ui_LicenseDialog(object):
+    def setupUi(self, LicenseDialog):
+        LicenseDialog.setObjectName("LicenseDialog")
+        LicenseDialog.resize(548, 465)
+        self.gridLayout = QtWidgets.QGridLayout(LicenseDialog)
         self.gridLayout.setObjectName("gridLayout")
-        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
+        self.textBrowser = QtWidgets.QTextBrowser(LicenseDialog)
         self.textBrowser.setObjectName("textBrowser")
         self.gridLayout.addWidget(self.textBrowser, 0, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(LicenseDialog)
+        QtCore.QMetaObject.connectSlotsByName(LicenseDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, LicenseDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        LicenseDialog.setWindowTitle(_translate("LicenseDialog", "License"))
+        self.textBrowser.setHtml(_translate("LicenseDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><title>GNU General Public License v3.0 - GNU Project - Free Software Foundation (FSF)</title><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Fira Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"

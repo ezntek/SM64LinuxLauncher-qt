@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>RecheckConfigurationDialog</class>
+ <widget class="QDialog" name="RecheckConfigurationDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,146 +14,21 @@
    <string>Recheck Configuration</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>ROM Region</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Model Pack Path (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Base ROM Path</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>24</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Does This Look Right to you?</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="QLineEdit" name="lineEdit_7">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Custom Name (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Continue</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="lineEdit_6">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Texture Pack Path (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="lineEdit_4">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="lineEdit_2">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>Jobs</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_9">
-     <property name="text">
-      <string>Additional Build Flags (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="lineEdit_3">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="l_repo">
      <property name="text">
       <string>Repository</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="lineEdit_8">
-     <property name="text">
-      <string/>
-     </property>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="line_edit_baserom_path">
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="lineEdit_5">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -166,8 +41,103 @@
      </property>
     </spacer>
    </item>
-   <item row="10" column="0">
-    <spacer name="horizontalSpacer">
+   <item row="0" column="0">
+    <widget class="QLabel" name="l_title">
+     <property name="font">
+      <font>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Does This Look Right to you?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="l_baserom_path">
+     <property name="text">
+      <string>Base ROM Path</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="l_model_pack">
+     <property name="text">
+      <string>Model Pack Path (if set)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="line_edit_model_pack">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="l_custom_name">
+     <property name="text">
+      <string>Custom Name (if set)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="l_additional_makeopts">
+     <property name="text">
+      <string>Additional Build Flags (if set)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="l_jobs">
+     <property name="text">
+      <string>Jobs (4 is default)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="l_rom_region">
+     <property name="text">
+      <string>ROM Region</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="line_edit_texture_pack">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="l_texture_pack">
+     <property name="text">
+      <string>Texture Pack Path (if set)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="2">
+    <widget class="QPushButton" name="b_model_pack_edit">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="2">
+    <widget class="QPushButton" name="b_build">
+     <property name="text">
+      <string>Build</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0" colspan="2">
+    <spacer name="horizontal_spacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -179,8 +149,171 @@
      </property>
     </spacer>
    </item>
+   <item row="7" column="2">
+    <widget class="QPushButton" name="b_texture_pack_path">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2">
+    <widget class="QLineEdit" name="line_edit_build_flags">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2">
+    <widget class="QLineEdit" name="line_edit_custom_name">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2">
+    <widget class="QComboBox" name="combobox_jobs">
+     <item>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>12</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>16</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QComboBox" name="combobox_romregion">
+     <item>
+      <property name="text">
+       <string>USA (us)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>European PAL (eu)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Japanese (jp)</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="b_baserom_path">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QComboBox" name="combobox_repo"/>
+   </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>b_baserom_path</sender>
+   <signal>clicked()</signal>
+   <receiver>RecheckConfigurationDialog</receiver>
+   <slot>b_baserom_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>774</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>322</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>b_texture_pack_path</sender>
+   <signal>clicked()</signal>
+   <receiver>RecheckConfigurationDialog</receiver>
+   <slot>b_texturepack_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>808</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>493</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>b_model_pack_edit</sender>
+   <signal>clicked()</signal>
+   <receiver>RecheckConfigurationDialog</receiver>
+   <slot>b_modelpack_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>783</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>693</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>b_build</sender>
+   <signal>clicked()</signal>
+   <receiver>RecheckConfigurationDialog</receiver>
+   <slot>b_build()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>773</x>
+     <y>514</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>486</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>b_baserom_path()</slot>
+  <slot>b_modelpack_path()</slot>
+  <slot>b_texturepack_path()</slot>
+  <slot>b_build()</slot>
+ </slots>
 </ui>

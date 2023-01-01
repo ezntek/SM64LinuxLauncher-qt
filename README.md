@@ -14,5 +14,7 @@ A rewrite of [SM64LinuxLauncher](https://github.com/Bloxxel64/SM64LinuxLauncher)
 ### **Currently Working on**:
 * Initial Bring-up
 
+### [Contributing](CONTRIBUTING.md)
+
 ### **License**:
 This project is licensed under the [GNU GPL Version 3](https://www.gnu.org/licenses/gpl-3.0.html) and Above License.

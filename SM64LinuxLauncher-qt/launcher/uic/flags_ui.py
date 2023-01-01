@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_BuildFlagsDialog(object):
     def setupUi(self, BuildFlagsDialog):
         BuildFlagsDialog.setObjectName("BuildFlagsDialog")
-        BuildFlagsDialog.resize(602, 299)
+        BuildFlagsDialog.resize(599, 219)
         self.gridLayout = QtWidgets.QGridLayout(BuildFlagsDialog)
         self.gridLayout.setObjectName("gridLayout")
         self.l_flags = QtWidgets.QLabel(BuildFlagsDialog)
@@ -20,7 +20,6 @@ class Ui_BuildFlagsDialog(object):
         self.gridLayout.addWidget(self.l_flags, 2, 0, 1, 1)
         self.jobs = QtWidgets.QComboBox(BuildFlagsDialog)
         self.jobs.setObjectName("jobs")
-        self.jobs.addItem("")
         self.jobs.addItem("")
         self.jobs.addItem("")
         self.jobs.addItem("")
@@ -47,15 +46,14 @@ class Ui_BuildFlagsDialog(object):
 
     def retranslateUi(self, BuildFlagsDialog):
         _translate = QtCore.QCoreApplication.translate
-        BuildFlagsDialog.setWindowTitle(_translate("BuildFlagsDialog", "Dialog"))
+        BuildFlagsDialog.setWindowTitle(_translate("BuildFlagsDialog", "Set Misc. Options"))
         self.l_flags.setText(_translate("BuildFlagsDialog", "Additional Build Flags (Leave Blank If Unsure)"))
         self.jobs.setItemText(0, _translate("BuildFlagsDialog", "4"))
         self.jobs.setItemText(1, _translate("BuildFlagsDialog", "1"))
         self.jobs.setItemText(2, _translate("BuildFlagsDialog", "2"))
-        self.jobs.setItemText(3, _translate("BuildFlagsDialog", "6"))
-        self.jobs.setItemText(4, _translate("BuildFlagsDialog", "8"))
+        self.jobs.setItemText(3, _translate("BuildFlagsDialog", "8"))
+        self.jobs.setItemText(4, _translate("BuildFlagsDialog", "10"))
         self.jobs.setItemText(5, _translate("BuildFlagsDialog", "12"))
-        self.jobs.setItemText(6, _translate("BuildFlagsDialog", "15"))
-        self.jobs.setItemText(7, _translate("BuildFlagsDialog", "16"))
+        self.jobs.setItemText(6, _translate("BuildFlagsDialog", "16"))
         self.start_build.setText(_translate("BuildFlagsDialog", "Start Build"))
         self.l_jobs.setText(_translate("BuildFlagsDialog", "No. Of Concurrent Jobs (pick 4 if unsure)"))

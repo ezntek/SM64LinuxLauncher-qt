@@ -14,7 +14,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # load the repos
         with open(os.path.join(
                 os.path.dirname(os.path.realpath(__file__)),
-                "./repos/available_repos.json")) as r: # get relative path
+                "./repos/repos.json")) as r: # get relative path
             self.repos = json.loads(r.read())
         
         for key in self.repos.keys():
