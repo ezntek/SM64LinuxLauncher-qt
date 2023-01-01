@@ -1,0 +1,15 @@
+{
+    "repo": {
+        "name": "nameOfRepo",
+        "repolink": "repoLink",
+        "branch": "repoBranch"
+    },
+    "romPath": "path/to/rom.z64",
+    "romRegion": "us",
+    "jobs": 4,
+    "customTextures": true,
+    "customModels": true,
+    "additionalMakeOpts": "BETTERCAMERA=0",
+    "playable": false,
+    "execPath": "path/to/repo/build/us_pc/sm64.us.f3dex2e"
+}
