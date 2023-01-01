@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_BuildNewDialog(object):
     def setupUi(self, BuildNewDialog):
         BuildNewDialog.setObjectName("BuildNewDialog")
-        BuildNewDialog.resize(708, 300)
+        BuildNewDialog.resize(859, 300)
         self.gridLayout = QtWidgets.QGridLayout(BuildNewDialog)
         self.gridLayout.setObjectName("gridLayout")
         self.texture_pack_select = QtWidgets.QPushButton(BuildNewDialog)
@@ -76,8 +76,8 @@ class Ui_BuildNewDialog(object):
         _translate = QtCore.QCoreApplication.translate
         BuildNewDialog.setWindowTitle(_translate("BuildNewDialog", "Build New Instance"))
         self.texture_pack_select.setText(_translate("BuildNewDialog", "Browse"))
-        self.l_texture_pack.setText(_translate("BuildNewDialog", "Pick a Texture Pack folder (Optional)"))
-        self.l_custom_name.setText(_translate("BuildNewDialog", "Type A Name for your build"))
+        self.l_texture_pack.setText(_translate("BuildNewDialog", "Pick a Texture Pack folder (optional)"))
+        self.l_custom_name.setText(_translate("BuildNewDialog", "Type A Custom Name to use in the Main Screen (optional)"))
         self.l_model_pack.setText(_translate("BuildNewDialog", "Pick a model pack folder (optional)"))
         self.b_continue.setText(_translate("BuildNewDialog", "Continue"))
         self.model_pack_select.setText(_translate("BuildNewDialog", "Browse"))

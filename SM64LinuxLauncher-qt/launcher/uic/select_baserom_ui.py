@@ -45,7 +45,7 @@ class Ui_BaseromSelectDialog(object):
 
         self.retranslateUi(BaseromSelectDialog)
         self.pushButton.clicked.connect(BaseromSelectDialog.select_baserom) # type: ignore
-        self.pushButton_2.clicked.connect(BaseromSelectDialog.continue) # type: ignore
+        self.pushButton_2.clicked.connect(BaseromSelectDialog.b_continue) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(BaseromSelectDialog)
 
     def retranslateUi(self, BaseromSelectDialog):
@@ -56,5 +56,5 @@ class Ui_BaseromSelectDialog(object):
         self.comboBox.setItemText(2, _translate("BaseromSelectDialog", "Japanese (jp)"))
         self.pushButton.setText(_translate("BaseromSelectDialog", "Browse"))
         self.pushButton_2.setText(_translate("BaseromSelectDialog", "Continue"))
-        self.label.setText(_translate("BaseromSelectDialog", "Select A Base Rom"))
+        self.label.setText(_translate("BaseromSelectDialog", "Select A Base ROM"))
         self.label_2.setText(_translate("BaseromSelectDialog", "Select the Region"))

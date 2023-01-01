@@ -50,7 +50,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Select A Base Rom</string>
+      <string>Select A Base ROM</string>
      </property>
     </widget>
    </item>
@@ -108,7 +108,7 @@
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>BaseromSelectDialog</receiver>
-   <slot>continue()</slot>
+   <slot>b_continue()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>332</x>
@@ -123,6 +123,6 @@
  </connections>
  <slots>
   <slot>select_baserom()</slot>
-  <slot>continue()</slot>
+  <slot>b_continue()</slot>
  </slots>
 </ui>

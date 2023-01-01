@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>708</width>
+    <width>859</width>
     <height>300</height>
    </rect>
   </property>
@@ -31,14 +31,14 @@
    <item row="4" column="0">
     <widget class="QLabel" name="l_texture_pack">
      <property name="text">
-      <string>Pick a Texture Pack folder (Optional)</string>
+      <string>Pick a Texture Pack folder (optional)</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="l_custom_name">
      <property name="text">
-      <string>Type A Name for your build</string>
+      <string>Type A Custom Name to use in the Main Screen (optional)</string>
      </property>
     </widget>
    </item>
@@ -52,7 +52,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="l_model_pack">
      <property name="text">
-      <string>Pick a model pack folder (optional)</string>
+      <string>Pick a Model pack folder (optional)</string>
      </property>
     </widget>
    </item>
