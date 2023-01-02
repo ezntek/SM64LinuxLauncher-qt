@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/ui/select_baserom.ui'
+# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/res/ui/select_baserom.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.0
 #

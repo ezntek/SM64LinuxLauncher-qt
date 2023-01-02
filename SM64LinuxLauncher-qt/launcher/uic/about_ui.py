@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/ui/about.ui'
+# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/res/ui/about.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.0
 #
@@ -9,13 +9,13 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(654, 521)
-        self.gridLayout = QtWidgets.QGridLayout(Dialog)
+class Ui_AboutDialog(object):
+    def setupUi(self, AboutDialog):
+        AboutDialog.setObjectName("AboutDialog")
+        AboutDialog.resize(654, 521)
+        self.gridLayout = QtWidgets.QGridLayout(AboutDialog)
         self.gridLayout.setObjectName("gridLayout")
-        self.label = QtWidgets.QLabel(Dialog)
+        self.label = QtWidgets.QLabel(AboutDialog)
         font = QtGui.QFont()
         font.setPointSize(22)
         font.setBold(True)
@@ -23,18 +23,18 @@ class Ui_Dialog(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
-        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
+        self.textBrowser = QtWidgets.QTextBrowser(AboutDialog)
         self.textBrowser.setObjectName("textBrowser")
         self.gridLayout.addWidget(self.textBrowser, 1, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(AboutDialog)
+        QtCore.QMetaObject.connectSlotsByName(AboutDialog)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, AboutDialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "SM64LinuxLauncher-qt"))
-        self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        AboutDialog.setWindowTitle(_translate("AboutDialog", "About"))
+        self.label.setText(_translate("AboutDialog", "SM64LinuxLauncher-qt"))
+        self.textBrowser.setHtml(_translate("AboutDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Fira Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
@@ -46,9 +46,8 @@ class Ui_Dialog(object):
 "<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">sm64ex-coop</li></ul>\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">and more. This project aims to improve on many aspects of the previous project, including:</p>\n"
 "<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ease Of Use</li>\n"
-"<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Better Theming Support</li>\n"
+"<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Better Desktop Integration</li>\n"
 "<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">More Features for convenience sake</li>\n"
-"<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Better Modularity</li>\n"
-"<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Better support for different GNU/Linux distributions on different ISAs.</li></ul>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This Program is also licensed under the GNU General Public License Version 3, which guarantees User Freedom. Visit https://gnu.org/licenses/gpl-3.0.html for more information, or go to About -&gt; Help in the toolbar to view the license. </p></body></html>"))
+"<li style=\"\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Better Stability and Extensibility</li></ul>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">and So On.</p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This Program is also licensed under the GNU General Public License Version 3, which guarantees User Freedom. Visit <a href=\"https://gnu.org/licenses/gpl-3.0.html\"><span style=\" text-decoration: underline; color:#81a1c1;\">https://gnu.org/licenses/gpl-3.0.html</span></a> for more information, or go to About -&gt; Help in the toolbar to view the license. </p></body></html>"))

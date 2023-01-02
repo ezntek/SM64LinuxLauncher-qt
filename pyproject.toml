@@ -8,8 +8,8 @@ readme = "README.md"
 packages = [{include = "sm64linuxlauncher_qt"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-PyQt5 = "^5.15.7"
+python = ">=3.10,<3.12"
+pyqt6 = "^6.4.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets
 import os
-import json 
+import json
+import build
 
 # UIs
 from uic.build_new_ui import Ui_BuildNewDialog
@@ -115,7 +116,7 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         index = 0 # for setting the current index
         with open(os.path.join(
             os.path.dirname(os.path.realpath(__file__)),
-            "./repos/repos.json"
+            "./res/repos/repos.json"
         )) as r:
             repos_dict: dict = json.loads(r.read())
             for count, repo_name in enumerate(repos_dict.keys()):
@@ -161,16 +162,39 @@ class RecheckConfigDialog(QtWidgets.QDialog):
     
     # slots
     def b_build(self):
-        pass
+        self.close()
 
     def b_baserom_path(self):
-        pass
+        # Create new Dialog
+        file_sel = QtWidgets.QFileDialog()
+        file_sel.setNameFilter("Nintendo 64 ROMs (*.z64)")
+        file_sel.setFileMode(QtWidgets.QFileDialog.FileMode.ExistingFile)
+        file_sel.exec()
+
+        # Update UI
+        self.rom_path = file_sel.selectedFiles()[0]
+        self.ui.line_edit_baserom_path.setText(self.rom_path)
+
+        del file_sel # delete to free memory
     
     def b_modelpack_path(self):
-        pass
+        # create new File Picker Dialog
+        modelpack_sel = QtWidgets.QFileDialog()
+        modelpack_sel.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
+        modelpack_sel.exec()
+
+        # Update UI
+        self.model_pack_folder = modelpack_sel.selectedFiles()[0]
+        self.ui.line_edit_model_pack.setText(self.model_pack_folder)
+
     
     def b_texturepack_path(self):
-        pass
+        texturepack_sel = QtWidgets.QFileDialog()
+        texturepack_sel.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
+        texturepack_sel.exec()
+
+        self.texture_pack_folder = texturepack_sel.selectedFiles()[0]
+        self.ui.line_edit_texture_pack.setText(self.texture_pack_folder)
 
 
 class BuildNewDialog(QtWidgets.QDialog):
@@ -178,7 +202,7 @@ class BuildNewDialog(QtWidgets.QDialog):
         super().__init__(parent)
         self.ui = Ui_BuildNewDialog()
         self.ui.setupUi(self)
-        self.repo = repo
+        self.repo: dict[str, str] = repo
         self.custom_name = ""
         self.ui.l_build_what.setText(repo["name"]) # set the now building label
 
@@ -247,5 +271,17 @@ class BuildNewDialog(QtWidgets.QDialog):
             parent=None
         )
         recheck_val_dialog.exec()
+
+        # print the json (for debug)
+        print(build.parse_to_json(build.parse_to_dict(
+            self.custom_name,
+            self.repo,
+            self.model_pack_folder,
+            self.texture_pack_folder,
+            self.rom_path,
+            self.region,
+            self.jobs,
+            self.additional_make_opts
+        )))
 
          

@@ -4,11 +4,15 @@
         "repolink": "repoLink",
         "branch": "repoBranch"
     },
+    "usingCustomName": true,
+    "customName": "My Custom Name",
     "romPath": "path/to/rom.z64",
     "romRegion": "us",
     "jobs": 4,
     "customTextures": true,
+    "texturesPath": "path/to/textures",
     "customModels": true,
+    "modelsPath": "path/to/models",
     "additionalMakeOpts": "BETTERCAMERA=0",
     "playable": false,
     "execPath": "path/to/repo/build/us_pc/sm64.us.f3dex2e"

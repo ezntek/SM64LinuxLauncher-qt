@@ -15,9 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="9" column="4">
-     <widget class="QListWidget" name="available_builds_list"/>
-    </item>
     <item row="0" column="4">
      <widget class="QPushButton" name="build_button">
       <property name="text">
@@ -34,6 +31,9 @@
        <string>Play</string>
       </property>
      </widget>
+    </item>
+    <item row="9" column="4" rowspan="4">
+     <widget class="QListWidget" name="available_builds_list"/>
     </item>
    </layout>
   </widget>
@@ -57,7 +57,7 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAbout"/>
+    <addaction name="action_about"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
@@ -67,7 +67,7 @@
     <string>Quit</string>
    </property>
   </action>
-  <action name="actionAbout">
+  <action name="action_about">
    <property name="text">
     <string>About</string>
    </property>

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/ui/failed.ui'
+# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/res/ui/failed.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.0
 #

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/ui/main_window.ui'
+# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/res/ui/main_window.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.0
 #
@@ -17,9 +17,6 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.available_builds_list = QtWidgets.QListWidget(self.centralwidget)
-        self.available_builds_list.setObjectName("available_builds_list")
-        self.gridLayout.addWidget(self.available_builds_list, 9, 4, 1, 1)
         self.build_button = QtWidgets.QPushButton(self.centralwidget)
         self.build_button.setObjectName("build_button")
         self.gridLayout.addWidget(self.build_button, 0, 4, 1, 1)
@@ -29,6 +26,9 @@ class Ui_MainWindow(object):
         self.play_button = QtWidgets.QPushButton(self.centralwidget)
         self.play_button.setObjectName("play_button")
         self.gridLayout.addWidget(self.play_button, 0, 2, 1, 1)
+        self.available_builds_list = QtWidgets.QListWidget(self.centralwidget)
+        self.available_builds_list.setObjectName("available_builds_list")
+        self.gridLayout.addWidget(self.available_builds_list, 9, 4, 4, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -43,10 +43,10 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
         self.action_quit = QtGui.QAction(MainWindow)
         self.action_quit.setObjectName("action_quit")
-        self.actionAbout = QtGui.QAction(MainWindow)
-        self.actionAbout.setObjectName("actionAbout")
+        self.action_about = QtGui.QAction(MainWindow)
+        self.action_about.setObjectName("action_about")
         self.menuFile.addAction(self.action_quit)
-        self.menuHelp.addAction(self.actionAbout)
+        self.menuHelp.addAction(self.action_about)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
@@ -63,4 +63,4 @@ class Ui_MainWindow(object):
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.action_quit.setText(_translate("MainWindow", "Quit"))
-        self.actionAbout.setText(_translate("MainWindow", "About"))
+        self.action_about.setText(_translate("MainWindow", "About"))

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/ui/recheck_config.ui'
+# Form implementation generated from reading ui file './SM64LinuxLauncher-qt/launcher/res/ui/recheck_config.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.0
 #
