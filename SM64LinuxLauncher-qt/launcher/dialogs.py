@@ -1,5 +1,6 @@
 from PyQt6 import QtWidgets
 import os
+import shutil
 import json
 import build
 
@@ -214,6 +215,10 @@ class BuildNewDialog(QtWidgets.QDialog):
         self.jobs: int = 0
         self.additional_make_opts = ""
 
+        # make builds folder if it doesnt exist already
+        if not os.path.isdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
+            os.mkdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds"))
+
     # Slots
     def pick_texture_pack_folder(self):
         # create a file picker object
@@ -272,8 +277,9 @@ class BuildNewDialog(QtWidgets.QDialog):
         )
         recheck_val_dialog.exec()
 
-        # print the json (for debug)
-        print(build.parse_to_json(build.parse_to_dict(
+        self.close()
+
+        build.build(build.parse_to_dict(
             self.custom_name,
             self.repo,
             self.model_pack_folder,
@@ -282,6 +288,6 @@ class BuildNewDialog(QtWidgets.QDialog):
             self.region,
             self.jobs,
             self.additional_make_opts
-        )))
+        ))
 
          

@@ -38,6 +38,16 @@ class MainWindow(QtWidgets.QMainWindow):
         d = BuildNewDialog(self.repos[selected_build]) # pass in the selected build
         d.exec()
     
+    def refresh_builds(self):
+        for d in os.listdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
+            if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)), d, "./build.json")):
+                json_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), d, "./build.json")
+                dic: dict = json.loads(json_file)
+                if dic["playable"]:
+                    self.ui.available_builds_list.addItem(d)
+                del json_file
+                del dic
+
     def play_selected(self):
         pass
 
@@ -45,7 +55,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
 def main() -> int:
     app = QtWidgets.QApplication([])
-    app.setStyle('Breeze')
     win = MainWindow(parent=None)
     win.show()
     return app.exec()

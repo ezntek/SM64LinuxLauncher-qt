@@ -1,27 +1,27 @@
 {
     "sm64ex Nightly (RECOMMENDED)": {
         "name": "sm64ex Nightly",
-        "repolink": "https//github.com/sm64pc/sm64ex",
+        "repolink": "https://github.com/sm64pc/sm64ex",
         "branchname": "nightly"
     },
     "sm64ex Master": {
         "name": "sm64ex Master",
-        "repolink": "https//github.com/sm64pc/sm64ex",
+        "repolink": "https://github.com/sm64pc/sm64ex",
         "branchname": "master"
     },
     "Render96ex Master": {
         "name": "Render96ex Master",
-        "repolink": "https//github.com/Render96/Render96ex",
+        "repolink": "https://github.com/Render96/Render96ex",
         "branchname": "master"
     },
     "Render96ex Alpha": {
         "name": "Render96ex Alpha",
-        "repolink": "https//github.com/Render96/Render96ex",
+        "repolink": "https://github.com/Render96/Render96ex",
         "branchname": "alpha"
     },
     "sm64ex Co-op": {
         "name": "sm64ex Co-op",
-        "repolink": "https//github.com/djoslin0/sm64ex-coop",
+        "repolink": "https://github.com/djoslin0/sm64ex-coop",
         "branchname": "coop"
     }
 }

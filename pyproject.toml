@@ -10,6 +10,7 @@ packages = [{include = "sm64linuxlauncher_qt"}]
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 pyqt6 = "^6.4.0"
+gitpython = "^3.1.30"
 
 [build-system]
 requires = ["poetry-core"]

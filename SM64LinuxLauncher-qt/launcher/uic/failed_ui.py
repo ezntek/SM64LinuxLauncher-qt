@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_BuildFailedDialog(object):
     def setupUi(self, BuildFailedDialog):
         BuildFailedDialog.setObjectName("BuildFailedDialog")
-        BuildFailedDialog.resize(400, 29)
+        BuildFailedDialog.resize(459, 29)
         self.horizontalLayout = QtWidgets.QHBoxLayout(BuildFailedDialog)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(BuildFailedDialog)

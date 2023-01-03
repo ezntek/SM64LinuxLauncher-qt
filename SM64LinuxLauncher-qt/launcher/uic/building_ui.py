@@ -9,16 +9,16 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_BuildSucceededDialog(object):
-    def setupUi(self, BuildSucceededDialog):
-        BuildSucceededDialog.setObjectName("BuildSucceededDialog")
-        BuildSucceededDialog.resize(458, 29)
-        self.horizontalLayout = QtWidgets.QHBoxLayout(BuildSucceededDialog)
+class Ui_BuildingDialog(object):
+    def setupUi(self, BuildingDialog):
+        BuildingDialog.setObjectName("BuildingDialog")
+        BuildingDialog.resize(458, 29)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(BuildingDialog)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(BuildSucceededDialog)
+        self.label = QtWidgets.QLabel(BuildingDialog)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
-        self.label_2 = QtWidgets.QLabel(BuildSucceededDialog)
+        self.label_2 = QtWidgets.QLabel(BuildingDialog)
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -26,11 +26,11 @@ class Ui_BuildSucceededDialog(object):
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
 
-        self.retranslateUi(BuildSucceededDialog)
-        QtCore.QMetaObject.connectSlotsByName(BuildSucceededDialog)
+        self.retranslateUi(BuildingDialog)
+        QtCore.QMetaObject.connectSlotsByName(BuildingDialog)
 
-    def retranslateUi(self, BuildSucceededDialog):
+    def retranslateUi(self, BuildingDialog):
         _translate = QtCore.QCoreApplication.translate
-        BuildSucceededDialog.setWindowTitle(_translate("BuildSucceededDialog", "Building"))
-        self.label.setText(_translate("BuildSucceededDialog", "Building..."))
-        self.label_2.setText(_translate("BuildSucceededDialog", "Do Not close under any circumstances!"))
+        BuildingDialog.setWindowTitle(_translate("BuildingDialog", "Building"))
+        self.label.setText(_translate("BuildingDialog", "Building..."))
+        self.label_2.setText(_translate("BuildingDialog", "Do Not close under any circumstances!"))
