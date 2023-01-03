@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>418</width>
+    <width>499</width>
     <height>155</height>
    </rect>
   </property>
@@ -14,7 +14,45 @@
    <string>Select Base ROM</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1" colspan="2">
+   <item row="0" column="2">
+    <widget class="QPushButton" name="browse_baserom">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="baserom_path">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="l_region_select">
+     <property name="text">
+      <string>Select the Region</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="l_baserom_select">
+     <property name="text">
+      <string>Select A Base ROM</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QPushButton" name="clear_baserom">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
     <widget class="QComboBox" name="region_select">
      <item>
       <property name="text">
@@ -33,35 +71,14 @@
      </item>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QPushButton" name="browse_baserom">
-     <property name="text">
-      <string>Browse</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
+   <item row="3" column="3">
     <widget class="QPushButton" name="b_continue">
      <property name="text">
       <string>Continue</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="l_baserom_select">
-     <property name="text">
-      <string>Select A Base ROM</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="l_region_select">
-     <property name="text">
-      <string>Select the Region</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
+   <item row="2" column="3">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -74,13 +91,10 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="baserom_path">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="clearButtonEnabled">
-      <bool>false</bool>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="b_cancel">
+     <property name="text">
+      <string>Cancel</string>
      </property>
     </widget>
    </item>
@@ -111,12 +125,44 @@
    <slot>b_continue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>332</x>
-     <y>276</y>
+     <x>492</x>
+     <y>148</y>
     </hint>
     <hint type="destinationlabel">
      <x>129</x>
-     <y>253</y>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clear_baserom</sender>
+   <signal>clicked()</signal>
+   <receiver>baserom_path</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>439</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>233</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>b_cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>BaseromSelectDialog</receiver>
+   <slot>b_cancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>109</y>
     </hint>
    </hints>
   </connection>
@@ -124,5 +170,6 @@
  <slots>
   <slot>select_baserom()</slot>
   <slot>b_continue()</slot>
+  <slot>b_cancel()</slot>
  </slots>
 </ui>

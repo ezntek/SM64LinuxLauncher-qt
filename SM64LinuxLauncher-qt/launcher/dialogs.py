@@ -1,6 +1,5 @@
 from PyQt6 import QtWidgets
 import os
-import shutil
 import json
 import build
 
@@ -16,9 +15,16 @@ class BaseromSelectDialog(QtWidgets.QDialog):
         self.ui = Ui_BaseromSelectDialog()
         self.ui.setupUi(self)
 
+        self.dialog_dismissed = False
+        self.cancelled_build_job = False
         self.rom_path = ""
         self.region = ""
     
+    # slots
+    def b_cancel(self):
+        self.cancelled_build_job = True
+        self.close()
+
     def b_continue(self):
         match self.ui.region_select.currentText:
             case "USA (us)":
@@ -49,6 +55,7 @@ class BaseromSelectDialog(QtWidgets.QDialog):
             # show the dialog
             dialog.exec()
         else:
+            self.dialog_dismissed = True
             self.close()
 
     def select_baserom(self):
@@ -58,22 +65,43 @@ class BaseromSelectDialog(QtWidgets.QDialog):
         picker.setFileMode(QtWidgets.QFileDialog.FileMode.ExistingFile)
         picker.exec()
 
-        # update the lineEdit contents
-        self.ui.baserom_path.setText(picker.selectedFiles()[0])
+        try:
+            # update the lineEdit contents
+            self.ui.baserom_path.setText(picker.selectedFiles()[0])
 
-        # set the rom path
-        self.rom_path = picker.selectedFiles()[0]
+            # set the rom path
+            self.rom_path = picker.selectedFiles()[0]
+            del picker
+        except IndexError:
+            del picker
+            return
 
-class BuildFlagsDialog(QtWidgets.QDialog):
+    def exec(self) -> int:
+        self.dialog_dismissed = False
+        return super().exec()
+
+class BuildFlagsDialog(QtWidgets.QDialog):    
     def __init__(self, parent: QtWidgets.QWidget | None = None) -> None:
         super().__init__(parent)
         self.ui = Ui_BuildFlagsDialog()
         self.ui.setupUi(self)
 
+        self.dialog_dismissed = False
+        self.cancelled_build_job = False
         # data
         self.jobs: int = 0
         self.additional_make_opts = ""
-    
+
+    # reset the variable on each launch
+    def exec(self) -> int:
+        self.dialog_dismissed = False
+        return super().exec()
+
+    # slots
+    def b_cancel(self):
+        self.cancelled_build_job = True
+        self.close()
+
     def start_build(self):
         if int(self.ui.jobs.currentText()) == 0:
             self.jobs = 4 # set the default
@@ -81,6 +109,7 @@ class BuildFlagsDialog(QtWidgets.QDialog):
             self.jobs = int(self.ui.jobs.currentText())
          
         self.additional_make_opts = self.ui.flags.text()
+        self.dialog_dismissed = True
         self.close()
 
 class RecheckConfigDialog(QtWidgets.QDialog):
@@ -98,6 +127,8 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         super().__init__(parent)
         self.ui = Ui_RecheckConfigurationDialog()
         self.ui.setupUi(self)
+        self.dialog_dismissed = False
+        self.cancelled_build_job = False
 
         # set values as class members
         self.custom_name = custom_name
@@ -112,20 +143,14 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         # load values into UI
         self.load_values()
 
-    def load_values(self):
-        # load available repos
-        index = 0 # for setting the current index
-        with open(os.path.join(
-            os.path.dirname(os.path.realpath(__file__)),
-            "./res/repos/repos.json"
-        )) as r:
-            repos_dict: dict = json.loads(r.read())
-            for count, repo_name in enumerate(repos_dict.keys()):
-                self.ui.combobox_repo.addItem(repo_name)
-                if repo_name == self.repo["name"]:
-                    index = count
+    # reset the variable on dialog open
+    def exec(self) -> int:
+        self.dialog_dismissed = False
+        return super().exec()
 
-        self.ui.combobox_repo.setCurrentIndex(index)
+    def load_values(self):
+        # load repo
+        self.ui.l_repo_display.setText(self.repo["name"])
 
         # load base rom path
         self.ui.line_edit_baserom_path.setText(self.rom_path)
@@ -162,7 +187,14 @@ class RecheckConfigDialog(QtWidgets.QDialog):
 
     
     # slots
+
+    def b_cancel(self):
+        self.cancelled_build_job = True
+        self.close()
+
+
     def b_build(self):
+        self.dialog_dismissed = True
         self.close()
 
     def b_baserom_path(self):
@@ -173,10 +205,13 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         file_sel.exec()
 
         # Update UI
-        self.rom_path = file_sel.selectedFiles()[0]
-        self.ui.line_edit_baserom_path.setText(self.rom_path)
-
-        del file_sel # delete to free memory
+        try:
+            self.rom_path = file_sel.selectedFiles()[0]
+            self.ui.line_edit_baserom_path.setText(self.rom_path)
+            del file_sel
+        except IndexError: # if there is an IndexError, that means the file picker was closed abruptly
+            del file_sel # delete to free memory
+            return
     
     def b_modelpack_path(self):
         # create new File Picker Dialog
@@ -185,8 +220,13 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         modelpack_sel.exec()
 
         # Update UI
-        self.model_pack_folder = modelpack_sel.selectedFiles()[0]
-        self.ui.line_edit_model_pack.setText(self.model_pack_folder)
+        try:
+            self.model_pack_folder = modelpack_sel.selectedFiles()[0]
+            self.ui.line_edit_model_pack.setText(self.model_pack_folder)
+            del modelpack_sel
+        except IndexError:
+            del modelpack_sel
+            return
 
     
     def b_texturepack_path(self):
@@ -194,9 +234,12 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         texturepack_sel.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
         texturepack_sel.exec()
 
-        self.texture_pack_folder = texturepack_sel.selectedFiles()[0]
-        self.ui.line_edit_texture_pack.setText(self.texture_pack_folder)
-
+        try:
+            self.texture_pack_folder = texturepack_sel.selectedFiles()[0]
+            self.ui.line_edit_texture_pack.setText(self.texture_pack_folder)
+        except IndexError:
+            del texturepack_sel
+            return
 
 class BuildNewDialog(QtWidgets.QDialog):
     def __init__(self, repo: dict, parent: QtWidgets.QWidget | None = None) -> None:
@@ -219,7 +262,13 @@ class BuildNewDialog(QtWidgets.QDialog):
         if not os.path.isdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
             os.mkdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds"))
 
+
     # Slots
+    def b_cancel(self):
+        self.close()
+        del self
+        return
+
     def pick_texture_pack_folder(self):
         # create a file picker object
         picker = QtWidgets.QFileDialog(self)
@@ -228,9 +277,14 @@ class BuildNewDialog(QtWidgets.QDialog):
         picker.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
         picker.exec()
 
-        # set the lineEdit content to the picker result
-        self.texture_pack_folder = picker.selectedFiles()[0]
-        self.ui.texture_pack_folder.setText(picker.selectedFiles()[0])
+        try:
+            # set the lineEdit content to the picker result
+            self.texture_pack_folder = picker.selectedFiles()[0]
+            self.ui.texture_pack_folder.setText(picker.selectedFiles()[0])
+            del picker
+        except IndexError:
+            del picker
+            return
 
     def pick_model_pack_folder(self):
         # create a file picker object
@@ -240,28 +294,48 @@ class BuildNewDialog(QtWidgets.QDialog):
         picker.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
         picker.exec()
 
-        # set the lineEdit content to the chosen folder
-        self.model_pack_folder = picker.selectedFiles()[0]
-        self.ui.model_pack_folder.setText(picker.selectedFiles()[0])
-    
+        try:
+            # set the lineEdit content to the chosen folder
+            self.model_pack_folder = picker.selectedFiles()[0]
+            self.ui.model_pack_folder.setText(picker.selectedFiles()[0])
+            del picker
+        except IndexError:
+            del picker
+            return
+
     def b_continue(self):
         # set custom name
         self.custom_name = self.ui.repo_custom_name.text()
 
         # select BaseROM
         baserom_dialog = BaseromSelectDialog(parent=None)
-        baserom_dialog.exec()
 
-        self.rom_path, self.region = baserom_dialog.rom_path, baserom_dialog.region # set the values
-        del baserom_dialog # delete to free memory
+        # start the loop and break if properly dismissed
+        while not baserom_dialog.dialog_dismissed:
+            baserom_dialog.exec()
+            if baserom_dialog.cancelled_build_job:
+                del baserom_dialog
+                self.close()
+                return
+            if baserom_dialog.dialog_dismissed:
+                self.rom_path, self.region = baserom_dialog.rom_path, baserom_dialog.region
+                del baserom_dialog
+                break
 
         # select Flags
-        flags_dialog = BuildFlagsDialog(parent=None)
-        flags_dialog.exec()
+        flags_dialog: BuildFlagsDialog = BuildFlagsDialog(parent=None)
 
-        # set the values
-        self.jobs, self.additional_make_opts = flags_dialog.jobs, flags_dialog.additional_make_opts
-        del flags_dialog # delete the instance
+        # start a loop and break if properly dismissed
+        while not flags_dialog.dialog_dismissed:
+            flags_dialog.exec()
+            if flags_dialog.cancelled_build_job:
+                del flags_dialog
+                self.close()
+                return
+            if flags_dialog.dialog_dismissed:
+                self.jobs, self.additional_make_opts = flags_dialog.jobs, flags_dialog.additional_make_opts
+                del flags_dialog # delete the instance
+                break
 
         # Recheck Values Dialog
         recheck_val_dialog = RecheckConfigDialog(
@@ -275,9 +349,22 @@ class BuildNewDialog(QtWidgets.QDialog):
             self.additional_make_opts,
             parent=None
         )
-        recheck_val_dialog.exec()
 
-        self.close()
+        while not recheck_val_dialog.dialog_dismissed:
+            recheck_val_dialog.exec()
+            if recheck_val_dialog.cancelled_build_job:
+                del recheck_val_dialog
+                self.close()
+                return
+            if recheck_val_dialog.dialog_dismissed:
+                # set the new values
+                (self.custom_name, self.model_pack_folder,
+                self.texture_pack_folder, self.rom_path,
+                self.region, self.jobs, self.additional_make_opts) = (
+                    recheck_val_dialog.custom_name, recheck_val_dialog.model_pack_folder,
+                    recheck_val_dialog.texture_pack_folder, recheck_val_dialog.rom_path,
+                    recheck_val_dialog.region, recheck_val_dialog.jobs, recheck_val_dialog.additional_make_opts
+                )
 
         build.build(build.parse_to_dict(
             self.custom_name,

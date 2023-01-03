@@ -60,13 +60,6 @@
      </item>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
-    <widget class="QPushButton" name="start_build">
-     <property name="text">
-      <string>Start Build</string>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="1">
     <spacer name="vertical_spacer">
      <property name="orientation">
@@ -87,8 +80,35 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
+   <item row="2" column="2">
     <widget class="QLineEdit" name="flags"/>
+   </item>
+   <item row="2" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="start_build">
+     <property name="text">
+      <string>Continue</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="b_cancel">
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -101,8 +121,8 @@
    <slot>start_build()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>323</x>
-     <y>271</y>
+     <x>592</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
      <x>65</x>
@@ -110,8 +130,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>b_cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>BuildFlagsDialog</receiver>
+   <slot>b_cancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>369</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>184</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>start_build()</slot>
+  <slot>b_cancel()</slot>
  </slots>
 </ui>

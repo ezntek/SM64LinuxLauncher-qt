@@ -1,3 +1,5 @@
+from re import I
+import subprocess
 from PyQt6 import QtWidgets
 import json
 import os
@@ -11,6 +13,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setup_actions()
+        self.refresh_builds()
 
         # load the repos
         with open(os.path.join(
@@ -25,6 +28,19 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.action_quit.triggered.connect(self.close) # connect the quit action
         self.ui.action_about.triggered.connect(self.about_dialog)
 
+    def refresh_builds(self):
+        for d in os.listdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
+            if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds", d, "./build.json")):
+                json_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds", d, "./build.json")
+                with open(json_file_path) as json_file:
+                    dic: dict = json.loads(json_file.read())
+                if dic["playable"]:
+                    self.ui.builds_list.addItem(d)
+                del json_file
+                del json_file_path
+                del dic
+
+
     # Slots
     def about_dialog(self):
         d = QtWidgets.QDialog(parent=None)
@@ -37,19 +53,21 @@ class MainWindow(QtWidgets.QMainWindow):
         selected_build = self.ui.available_builds_list.currentItem().text()
         d = BuildNewDialog(self.repos[selected_build]) # pass in the selected build
         d.exec()
-    
-    def refresh_builds(self):
-        for d in os.listdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
-            if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)), d, "./build.json")):
-                json_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), d, "./build.json")
-                dic: dict = json.loads(json_file)
-                if dic["playable"]:
-                    self.ui.available_builds_list.addItem(d)
-                del json_file
-                del dic
-
+        self.refresh_builds()
+     
     def play_selected(self):
-        pass
+        # load the build.json
+        try:
+            with open(os.path.join(
+                os.path.dirname(os.path.realpath(__file__)),
+                f"builds/{self.ui.builds_list.currentItem().text()}/build.json"
+            )) as build_json:
+                dic: dict = json.loads(build_json.read())
+            
+            # run the game
+            subprocess.run(dic["execPath"], shell=True)
+        except IndexError:
+            pass
 
 # driver code
 

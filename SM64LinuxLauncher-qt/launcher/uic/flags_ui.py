@@ -28,9 +28,6 @@ class Ui_BuildFlagsDialog(object):
         self.jobs.addItem("")
         self.jobs.addItem("")
         self.gridLayout.addWidget(self.jobs, 1, 2, 1, 1)
-        self.start_build = QtWidgets.QPushButton(BuildFlagsDialog)
-        self.start_build.setObjectName("start_build")
-        self.gridLayout.addWidget(self.start_build, 4, 1, 1, 2)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.gridLayout.addItem(spacerItem, 3, 1, 1, 1)
         self.l_jobs = QtWidgets.QLabel(BuildFlagsDialog)
@@ -38,10 +35,19 @@ class Ui_BuildFlagsDialog(object):
         self.gridLayout.addWidget(self.l_jobs, 1, 0, 1, 2)
         self.flags = QtWidgets.QLineEdit(BuildFlagsDialog)
         self.flags.setObjectName("flags")
-        self.gridLayout.addWidget(self.flags, 2, 1, 1, 2)
+        self.gridLayout.addWidget(self.flags, 2, 2, 1, 1)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout.addItem(spacerItem1, 2, 1, 1, 1)
+        self.start_build = QtWidgets.QPushButton(BuildFlagsDialog)
+        self.start_build.setObjectName("start_build")
+        self.gridLayout.addWidget(self.start_build, 4, 2, 1, 1)
+        self.b_cancel = QtWidgets.QPushButton(BuildFlagsDialog)
+        self.b_cancel.setObjectName("b_cancel")
+        self.gridLayout.addWidget(self.b_cancel, 4, 1, 1, 1)
 
         self.retranslateUi(BuildFlagsDialog)
         self.start_build.clicked.connect(BuildFlagsDialog.start_build) # type: ignore
+        self.b_cancel.clicked.connect(BuildFlagsDialog.b_cancel) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(BuildFlagsDialog)
 
     def retranslateUi(self, BuildFlagsDialog):
@@ -55,5 +61,6 @@ class Ui_BuildFlagsDialog(object):
         self.jobs.setItemText(4, _translate("BuildFlagsDialog", "10"))
         self.jobs.setItemText(5, _translate("BuildFlagsDialog", "12"))
         self.jobs.setItemText(6, _translate("BuildFlagsDialog", "16"))
-        self.start_build.setText(_translate("BuildFlagsDialog", "Start Build"))
         self.l_jobs.setText(_translate("BuildFlagsDialog", "No. Of Concurrent Jobs (pick 4 if unsure)"))
+        self.start_build.setText(_translate("BuildFlagsDialog", "Continue"))
+        self.b_cancel.setText(_translate("BuildFlagsDialog", "Cancel"))

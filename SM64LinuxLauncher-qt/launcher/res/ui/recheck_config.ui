@@ -14,53 +14,55 @@
    <string>Recheck Configuration</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QLabel" name="l_repo">
+   <item row="4" column="0">
+    <widget class="QLabel" name="l_custom_name">
      <property name="text">
-      <string>Repository</string>
+      <string>Custom Name (if set)</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="l_jobs">
-     <property name="text">
-      <string>Jobs (4 is default)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="l_texture_pack">
-     <property name="text">
-      <string>Texture Pack Path (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="2">
-    <widget class="QPushButton" name="b_model_pack_edit">
-     <property name="text">
-      <string>Edit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="l_title">
+   <item row="1" column="1">
+    <widget class="QLabel" name="l_repo_display">
      <property name="font">
       <font>
-       <pointsize>24</pointsize>
        <weight>75</weight>
        <italic>true</italic>
        <bold>true</bold>
       </font>
      </property>
      <property name="text">
-      <string>Does This Look Right to you?</string>
+      <string>Placeholder</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="l_baserom_path">
+   <item row="4" column="1" colspan="4">
+    <widget class="QLineEdit" name="line_edit_custom_name">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="line_edit_texture_pack">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="line_edit_model_pack">
      <property name="text">
-      <string>Base ROM Path</string>
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="l_additional_makeopts">
+     <property name="text">
+      <string>Additional Build Flags (if set)</string>
      </property>
     </widget>
    </item>
@@ -77,83 +79,7 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="l_rom_region">
-     <property name="text">
-      <string>ROM Region</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="l_additional_makeopts">
-     <property name="text">
-      <string>Additional Build Flags (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="l_custom_name">
-     <property name="text">
-      <string>Custom Name (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="line_edit_texture_pack">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="l_model_pack">
-     <property name="text">
-      <string>Model Pack Path (if set)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
-    <widget class="QLineEdit" name="line_edit_model_pack">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="3">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Clear</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="2">
-    <widget class="QPushButton" name="b_texture_pack_path">
-     <property name="text">
-      <string>Edit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="3">
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="text">
-      <string>Clear</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1" colspan="3">
-    <widget class="QLineEdit" name="line_edit_build_flags">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="readOnly">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="3">
+   <item row="5" column="1" colspan="4">
     <widget class="QComboBox" name="combobox_jobs">
      <item>
       <property name="text">
@@ -192,14 +118,38 @@
      </item>
     </widget>
    </item>
-   <item row="4" column="1" colspan="3">
-    <widget class="QLineEdit" name="line_edit_custom_name">
-     <property name="readOnly">
-      <bool>true</bool>
+   <item row="9" column="2">
+    <widget class="QPushButton" name="b_model_pack_edit">
+     <property name="text">
+      <string>Edit</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="3">
+   <item row="7" column="2">
+    <widget class="QPushButton" name="b_texture_pack_path">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="l_model_pack">
+     <property name="text">
+      <string>Model Pack Path (if set)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="4">
+    <widget class="QLineEdit" name="line_edit_build_flags">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="4">
     <widget class="QComboBox" name="combobox_romregion">
      <item>
       <property name="text">
@@ -218,10 +168,32 @@
      </item>
     </widget>
    </item>
-   <item row="2" column="3">
-    <widget class="QPushButton" name="b_baserom_path">
+   <item row="0" column="0">
+    <widget class="QLabel" name="l_title">
+     <property name="font">
+      <font>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>Edit</string>
+      <string>Does This Look Right to you?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="l_texture_pack">
+     <property name="text">
+      <string>Texture Pack Path (if set)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="l_rom_region">
+     <property name="text">
+      <string>ROM Region</string>
      </property>
     </widget>
    </item>
@@ -232,17 +204,28 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="3">
-    <widget class="QComboBox" name="combobox_repo"/>
-   </item>
-   <item row="11" column="3">
-    <widget class="QPushButton" name="b_build">
+   <item row="2" column="0">
+    <widget class="QLabel" name="l_baserom_path">
      <property name="text">
-      <string>Build</string>
+      <string>Base ROM Path</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="0" colspan="3">
+   <item row="1" column="0">
+    <widget class="QLabel" name="l_repo">
+     <property name="text">
+      <string>Repository</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="l_jobs">
+     <property name="text">
+      <string>Jobs (4 is default)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0" colspan="2">
     <spacer name="horizontal_spacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -254,6 +237,41 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="11" column="2">
+    <widget class="QPushButton" name="b_cancel">
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="3" colspan="2">
+    <widget class="QPushButton" name="b_build">
+     <property name="text">
+      <string>Build</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="3" colspan="2">
+    <widget class="QPushButton" name="clear_model_pack">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3" colspan="2">
+    <widget class="QPushButton" name="clear_texture_pack">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" colspan="2">
+    <widget class="QPushButton" name="b_baserom_path">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -282,8 +300,8 @@
    <slot>b_texturepack_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>700</x>
-     <y>307</y>
+     <x>733</x>
+     <y>293</y>
     </hint>
     <hint type="destinationlabel">
      <x>493</x>
@@ -298,8 +316,8 @@
    <slot>b_modelpack_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>700</x>
-     <y>346</y>
+     <x>733</x>
+     <y>332</y>
     </hint>
     <hint type="destinationlabel">
      <x>693</x>
@@ -314,8 +332,8 @@
    <slot>b_build()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>700</x>
-     <y>529</y>
+     <x>823</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>606</x>
@@ -324,23 +342,23 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>clear_texture_pack</sender>
    <signal>clicked()</signal>
    <receiver>line_edit_texture_pack</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>716</x>
-     <y>296</y>
+     <x>823</x>
+     <y>293</y>
     </hint>
     <hint type="destinationlabel">
-     <x>514</x>
-     <y>300</y>
+     <x>643</x>
+     <y>292</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>clear_model_pack</sender>
    <signal>clicked()</signal>
    <receiver>line_edit_model_pack</receiver>
    <slot>clear()</slot>

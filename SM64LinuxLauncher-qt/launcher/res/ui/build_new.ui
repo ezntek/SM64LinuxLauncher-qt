@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>859</width>
+    <width>802</width>
     <height>300</height>
    </rect>
   </property>
@@ -14,82 +14,6 @@
    <string>Build New Instance</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="2">
-    <widget class="QPushButton" name="texture_pack_select">
-     <property name="text">
-      <string>Browse</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="repo_custom_name">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="l_texture_pack">
-     <property name="text">
-      <string>Pick a Texture Pack folder (optional)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="l_custom_name">
-     <property name="text">
-      <string>Type A Custom Name to use in the Main Screen (optional)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="model_pack_folder">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="l_model_pack">
-     <property name="text">
-      <string>Pick a Model pack folder (optional)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="2">
-    <widget class="QPushButton" name="b_continue">
-     <property name="text">
-      <string>Continue</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="texture_pack_folder">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <spacer name="h_spacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="model_pack_select">
-     <property name="text">
-      <string>Browse</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="l_now_building">
      <property name="font">
@@ -107,6 +31,27 @@
      </property>
     </widget>
    </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="texture_pack_folder">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="texture_pack_select">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="model_pack_folder">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1" colspan="2">
     <widget class="QLabel" name="l_build_what">
      <property name="font">
@@ -115,10 +60,99 @@
       </font>
      </property>
      <property name="text">
-      <string>Nothing Yet</string>
+      <string>Placeholder</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <spacer name="h_spacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="3" colspan="2">
+    <widget class="QPushButton" name="b_continue">
+     <property name="text">
+      <string>Continue</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="l_model_pack">
+     <property name="text">
+      <string>Pick a Model pack folder (optional)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="model_pack_select">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3" colspan="2">
+    <widget class="QPushButton" name="texture_pack_clear">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="4">
+    <widget class="QLineEdit" name="repo_custom_name">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="l_custom_name">
+     <property name="text">
+      <string>Type A Custom Name to use in the Main Screen (optional)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="3" colspan="2">
+    <widget class="QPushButton" name="model_pack_clear">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="l_texture_pack">
+     <property name="text">
+      <string>Pick a Texture Pack folder (optional)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QPushButton" name="cancel_button">
+     <property name="text">
+      <string>Cancel</string>
      </property>
     </widget>
    </item>
@@ -133,8 +167,8 @@
    <slot>pick_model_pack_folder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>641</x>
-     <y>149</y>
+     <x>705</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>265</x>
@@ -149,8 +183,8 @@
    <slot>pick_texture_pack_folder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>663</x>
-     <y>206</y>
+     <x>705</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
      <x>280</x>
@@ -165,12 +199,60 @@
    <slot>b_continue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
-     <y>268</y>
+     <x>795</x>
+     <y>293</y>
     </hint>
     <hint type="destinationlabel">
      <x>263</x>
      <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>model_pack_clear</sender>
+   <signal>clicked()</signal>
+   <receiver>model_pack_folder</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>746</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>461</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>texture_pack_clear</sender>
+   <signal>clicked()</signal>
+   <receiver>texture_pack_folder</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>752</x>
+     <y>165</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>165</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancel_button</sender>
+   <signal>clicked()</signal>
+   <receiver>BuildNewDialog</receiver>
+   <slot>b_cancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>635</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>283</y>
     </hint>
    </hints>
   </connection>
@@ -179,5 +261,6 @@
   <slot>pick_model_pack_folder()</slot>
   <slot>pick_texture_pack_folder()</slot>
   <slot>b_continue()</slot>
+  <slot>b_cancel()</slot>
  </slots>
 </ui>
