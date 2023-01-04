@@ -48,17 +48,19 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.action_about.triggered.connect(self.about_dialog)
 
     def refresh_builds(self):
-        for d in os.listdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
-            if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds", d, "./build.json")):
-                json_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds", d, "./build.json")
-                with open(json_file_path) as json_file:
-                    dic: dict = json.loads(json_file.read())
-                if dic["playable"]:
-                    self.ui.builds_list.addItem(d)
-                del json_file
-                del json_file_path
-                del dic
-
+        try:
+            for d in os.listdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds")):
+                if os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds", d, "./build.json")):
+                    json_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds", d, "./build.json")
+                    with open(json_file_path) as json_file:
+                        dic: dict = json.loads(json_file.read())
+                    if dic["playable"]:
+                        self.ui.builds_list.addItem(d)
+                    del json_file
+                    del json_file_path
+                    del dic
+        except FileNotFoundError:
+            os.mkdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds"))
 
     # Slots
     def about_dialog(self):
