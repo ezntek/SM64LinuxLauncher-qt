@@ -11,7 +11,6 @@ packages = [{include = "sm64linuxlauncher_qt"}]
 python = ">=3.10,<3.12"
 pyqt6 = "^6.4.0"
 gitpython = "^3.1.30"
-distro = "^1.8.0"
 
 [build-system]
 requires = ["poetry-core"]

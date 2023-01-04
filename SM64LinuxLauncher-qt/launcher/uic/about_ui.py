@@ -23,9 +23,15 @@ class Ui_AboutDialog(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(AboutDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 0, 1, 1, 1)
         self.textBrowser = QtWidgets.QTextBrowser(AboutDialog)
         self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout.addWidget(self.textBrowser, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.textBrowser, 2, 0, 1, 2)
 
         self.retranslateUi(AboutDialog)
         QtCore.QMetaObject.connectSlotsByName(AboutDialog)
@@ -34,6 +40,7 @@ class Ui_AboutDialog(object):
         _translate = QtCore.QCoreApplication.translate
         AboutDialog.setWindowTitle(_translate("AboutDialog", "About"))
         self.label.setText(_translate("AboutDialog", "SM64LinuxLauncher-qt"))
+        self.label_2.setText(_translate("AboutDialog", "Version Placeholder"))
         self.textBrowser.setHtml(_translate("AboutDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

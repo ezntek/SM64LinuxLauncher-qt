@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #    SM64LinuxLauncher-qt 
 #    A rewrite of SM64LinuxLauncher in PyQt that aims to improve user experience.
 
@@ -67,6 +69,10 @@ class MainWindow(QtWidgets.QMainWindow):
         d = QtWidgets.QDialog(parent=None)
         u = Ui_AboutDialog()
         u.setupUi(d)
+        # load the version 
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "res/version.json")) as vjson:
+            v: dict = json.loads(vjson.read())
+            u.label_2.setText(f"Version {v['versionMajor']}.{v['versionMinor']}.{v['versionPatch']} commit {v['commit']}")
         d.exec()
         d.close()
 

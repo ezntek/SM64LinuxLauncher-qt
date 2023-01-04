@@ -24,8 +24,8 @@ def setup() -> None:
 
     # make __main__.py executable
     print("LOG: making the program executable...")
-    mainpy = os.stat("./SM64LinuxLauncher-qt/__main__.py")
-    os.chmod("./SM64LinuxLauncher-qt/__main__.py", mainpy.st_mode | stat.S_IEXEC)
+    mainpy = os.stat("./dist/__main__.py")
+    os.chmod("./dist/__main__.py", mainpy.st_mode | stat.S_IEXEC)
 
     # clean up
     print("LOG: tidyinp up...")
