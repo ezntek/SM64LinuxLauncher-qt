@@ -1,12 +1,52 @@
+#    SM64LinuxLauncher-qt 
+#    A rewrite of SM64LinuxLauncher in PyQt that aims to improve user experience.
+
+#    Copyright (C) 2023 ezntek (ezntek@xflymusic.com)
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    any later version.
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see https://www.gnu.org/licenses/.
+
+
 import json
 import os
-from typing import Any
 import git.repo
 import shutil
 import subprocess
 
-from PyQt6.QtWidgets import QDialog, QGridLayout, QLabel
-from uic.building_ui import Ui_BuildingDialog
+from PyQt6.QtWidgets import QDialog, QWidget
+from uic.failed_ui import Ui_BuildFailedDialog
+from uic.succeeded_ui import Ui_BuildSucceededDialog
+
+# class definitions
+class BuildSucceededDialog(QDialog):
+    def __init__(self, parent: QWidget | None = None) -> None:
+        super().__init__(parent)
+        self.ui = Ui_BuildSucceededDialog()
+        self.ui.setupUi(self)
+
+        # data
+        self.dialog_dismissed = False
+        self.exec_now = False
+    
+    def play_now(self):
+        self.dialog_dismissed = True
+        self.exec_now = True
+        self.close()
+    
+    def play_later(self):
+        self.dialog_dismissed = True
+        self.exec_now = False
+        self.close()
 
 # function definitions
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -42,20 +82,14 @@ def parse_to_dict(custom_name: str,
 def parse_to_json(build_dict: dict) -> str:
     return json.dumps(build_dict, indent=4, sort_keys=True)
 
-def new_text_dialog(text: str):
-    dialog = QDialog(parent=None)
-    grid = QGridLayout(dialog)
-    label = QLabel(text)
-    grid.addWidget(label)
-    return dialog
-
 def build(build_dict: dict):
     # put up a display in the stdout
     print("""
     +-----------------------------+
     |                             |
     | Building the Configuration. |
-    | Do not close the terminal!  |
+    | Do not close the window     |
+    | OR terminal!                |
     |                             |
     +-----------------------------+
     """)
@@ -112,8 +146,17 @@ def build(build_dict: dict):
     
     # check if the executable exists
     if not os.path.exists(os.path.join(FOLDER_PATH, f"repo/build/{build_dict['romRegion']}_pc/sm64.{build_dict['romRegion']}.f3dex2e")):
-        log("Build Failed: The error message shuold be displayed below.")
+        log("Build Failed: The error message should be displayed in the command output.")
+
+        # Put up a new dialog
+        d = QDialog(parent=None)
+        u = Ui_BuildFailedDialog()
+        u.setupUi(d)
+        d.exec()
         log("Exiting to main menu...")
+        
+        # delete the variables
+        del d, u
         return
 
     log("Build Succeeded. Adding Entry to Builds List...")
@@ -127,6 +170,24 @@ def build(build_dict: dict):
 
     with open(os.path.join(FOLDER_PATH, "./build.json"), "w+") as buildjsonfile:
         buildjsonfile.write(parse_to_json(build_dict))
+
+    # open the build succeeded dialog
+
+    build_succeeded_dialog = BuildSucceededDialog(parent=None)
     
+    while not build_succeeded_dialog.dialog_dismissed:
+        build_succeeded_dialog.exec()
+        if build_succeeded_dialog.dialog_dismissed:
+            if build_succeeded_dialog.play_now:
+                subprocess.run(build_dict["execPath"])
+                build_succeeded_dialog.close()
+                break
+            
+            # break if not playing now
+            build_succeeded_dialog.close()
+            break
+
+    del build_succeeded_dialog
+
     # exit
     return 

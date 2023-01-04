@@ -1,6 +1,25 @@
+#    SM64LinuxLauncher-qt 
+#    A rewrite of SM64LinuxLauncher in PyQt that aims to improve user experience.
+
+#    Copyright (C) 2023 ezntek (ezntek@xflymusic.com)
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    any later version.
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see https://www.gnu.org/licenses/.
+
 from PyQt6 import QtWidgets
 import os
-import json
+
+from PyQt6.QtCore import pyqtSlot
 import build
 
 # UIs
@@ -187,16 +206,17 @@ class RecheckConfigDialog(QtWidgets.QDialog):
 
     
     # slots
-
+    
     def b_cancel(self):
         self.cancelled_build_job = True
         self.close()
 
-
+    
     def b_build(self):
         self.dialog_dismissed = True
         self.close()
 
+    
     def b_baserom_path(self):
         # Create new Dialog
         file_sel = QtWidgets.QFileDialog()
@@ -212,7 +232,8 @@ class RecheckConfigDialog(QtWidgets.QDialog):
         except IndexError: # if there is an IndexError, that means the file picker was closed abruptly
             del file_sel # delete to free memory
             return
-    
+
+        
     def b_modelpack_path(self):
         # create new File Picker Dialog
         modelpack_sel = QtWidgets.QFileDialog()
@@ -228,7 +249,7 @@ class RecheckConfigDialog(QtWidgets.QDialog):
             del modelpack_sel
             return
 
-    
+        
     def b_texturepack_path(self):
         texturepack_sel = QtWidgets.QFileDialog()
         texturepack_sel.setFileMode(QtWidgets.QFileDialog.FileMode.Directory)
@@ -366,6 +387,8 @@ class BuildNewDialog(QtWidgets.QDialog):
                     recheck_val_dialog.region, recheck_val_dialog.jobs, recheck_val_dialog.additional_make_opts
                 )
 
+        self.close()
+
         build.build(build.parse_to_dict(
             self.custom_name,
             self.repo,
@@ -376,5 +399,7 @@ class BuildNewDialog(QtWidgets.QDialog):
             self.jobs,
             self.additional_make_opts
         ))
+
+        return
 
          

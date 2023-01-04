@@ -1,8 +1,27 @@
-from re import I
+#    SM64LinuxLauncher-qt 
+#    A rewrite of SM64LinuxLauncher in PyQt that aims to improve user experience.
+
+#    Copyright (C) 2023 ezntek (ezntek@xflymusic.com)
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    any later version.
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see https://www.gnu.org/licenses/.
+
 import subprocess
-from PyQt6 import QtWidgets
 import json
 import os
+
+from PyQt6 import QtWidgets
+from PyQt6.QtGui import QIcon
 from uic.main_window_ui import Ui_MainWindow
 from uic.about_ui import Ui_AboutDialog
 from dialogs import BuildNewDialog
@@ -65,7 +84,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 dic: dict = json.loads(build_json.read())
             
             # run the game
-            subprocess.run(dic["execPath"], shell=True)
+            subprocess.run(dic["execPath"])
         except IndexError:
             pass
 
@@ -73,6 +92,12 @@ class MainWindow(QtWidgets.QMainWindow):
 
 def main() -> int:
     app = QtWidgets.QApplication([])
+    app.setWindowIcon(QIcon(
+        os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            "./res/img/logo.png"
+        )
+    ))
     win = MainWindow(parent=None)
     win.show()
     return app.exec()
