@@ -18,6 +18,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see https://www.gnu.org/licenses/.
 
+import threading
 import subprocess
 import json
 import os
@@ -98,8 +99,10 @@ class MainWindow(QtWidgets.QMainWindow):
                 dic: dict = json.loads(build_json.read())
             
             # run the game
-            subprocess.run(f"cd '{dic['repoRoot']}' && '{dic['execPath']}'")
-        except IndexError:
+            game_thread = threading.Thread(target=subprocess.run, args=(f'cd \'{dic["repoRoot"]}\'; \'{dic["execPath"]}\'',), kwargs={"shell":True,})
+            game_thread.start()
+                
+        except IndexError or AttributeError:
             pass
 
 # driver code

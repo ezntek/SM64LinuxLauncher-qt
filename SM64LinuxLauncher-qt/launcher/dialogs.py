@@ -16,11 +16,11 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see https://www.gnu.org/licenses/.
 
-from PyQt6 import QtWidgets
+import threading
 import os
-
-from PyQt6.QtCore import pyqtSlot
 import build
+
+from PyQt6 import QtWidgets
 
 # UIs
 from uic.build_new_ui import Ui_BuildNewDialog
@@ -45,6 +45,7 @@ class BaseromSelectDialog(QtWidgets.QDialog):
         self.close()
 
     def b_continue(self):
+        self.rom_path = self.ui.baserom_path.text() # Sync the UI and backend in case if the user cleared the path
         match self.ui.region_select.currentText:
             case "USA (us)":
                 self.region = "us"
@@ -206,13 +207,17 @@ class RecheckConfigDialog(QtWidgets.QDialog):
 
     
     # slots
-    
     def b_cancel(self):
         self.cancelled_build_job = True
         self.close()
 
     
     def b_build(self):
+        # sync the UI elements before exiting
+        self.texture_pack_folder = self.ui.line_edit_texture_pack.text()
+        self.model_pack_folder = self.ui.line_edit_model_pack.text()
+
+        # exit
         self.dialog_dismissed = True
         self.close()
 
@@ -328,6 +333,10 @@ class BuildNewDialog(QtWidgets.QDialog):
         # set custom name
         self.custom_name = self.ui.repo_custom_name.text()
 
+        # Sync UI elements with backend
+        self.model_pack_folder = self.ui.model_pack_folder.text()
+        self.texture_pack_folder = self.ui.texture_pack_folder.text()
+
         # select BaseROM
         baserom_dialog = BaseromSelectDialog(parent=None)
 
@@ -389,7 +398,7 @@ class BuildNewDialog(QtWidgets.QDialog):
 
         self.close()
 
-        build.build(build.parse_to_dict(
+        build_process = threading.Thread(target=build.build, args=(build.parse_to_dict(
             self.custom_name,
             self.repo,
             self.model_pack_folder,
@@ -398,8 +407,8 @@ class BuildNewDialog(QtWidgets.QDialog):
             self.region,
             self.jobs,
             self.additional_make_opts
-        ))
+        ),))
+
+        build_process.run()
 
         return
-
-         

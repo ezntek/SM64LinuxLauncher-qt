@@ -187,7 +187,7 @@ def build(build_dict: dict):
     while not build_succeeded_dialog.dialog_dismissed:
         build_succeeded_dialog.exec()
         if build_succeeded_dialog.dialog_dismissed:
-            if build_succeeded_dialog.play_now:
+            if build_succeeded_dialog.exec_now:
                 subprocess.run(build_dict["execPath"])
                 build_succeeded_dialog.close()
                 break
