@@ -90,7 +90,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="l_model_pack">
      <property name="text">
-      <string>Pick a Model pack folder (optional)</string>
+      <string>Pick a Model pack folder (optional, Render96 ONLY)</string>
      </property>
     </widget>
    </item>

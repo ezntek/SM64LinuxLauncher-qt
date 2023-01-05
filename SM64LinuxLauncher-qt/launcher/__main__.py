@@ -34,6 +34,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setup_actions()
+
+        # data
+        self.available_builds: list[str] = []
         self.refresh_builds()
 
         # load the repos
@@ -57,6 +60,9 @@ class MainWindow(QtWidgets.QMainWindow):
                     with open(json_file_path) as json_file:
                         dic: dict = json.loads(json_file.read())
                     if dic["playable"]:
+                        if d in self.available_builds:
+                            return # return if already added
+                        self.available_builds.append(d)
                         self.ui.builds_list.addItem(d)
                     del json_file
                     del json_file_path
@@ -92,7 +98,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 dic: dict = json.loads(build_json.read())
             
             # run the game
-            subprocess.run(dic["execPath"])
+            subprocess.run(f"cd '{dic['repoRoot']}' && '{dic['execPath']}'")
         except IndexError:
             pass
 

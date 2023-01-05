@@ -91,7 +91,7 @@ class Ui_BuildNewDialog(object):
         self.texture_pack_select.setText(_translate("BuildNewDialog", "Browse"))
         self.l_build_what.setText(_translate("BuildNewDialog", "Placeholder"))
         self.b_continue.setText(_translate("BuildNewDialog", "Continue"))
-        self.l_model_pack.setText(_translate("BuildNewDialog", "Pick a Model pack folder (optional)"))
+        self.l_model_pack.setText(_translate("BuildNewDialog", "Pick a Model pack folder (optional, Render96 ONLY)"))
         self.model_pack_select.setText(_translate("BuildNewDialog", "Browse"))
         self.texture_pack_clear.setText(_translate("BuildNewDialog", "Clear"))
         self.l_custom_name.setText(_translate("BuildNewDialog", "Type A Custom Name to use in the Main Screen (optional)"))

@@ -134,10 +134,18 @@ def build(build_dict: dict):
         log(f"copying the model pack from {build_dict['modelsPath']}")
         shutil.copytree(f"{str(build_dict['modelsPath'])}/actors", os.path.join(FOLDER_PATH, "./repo/actors"), dirs_exist_ok=True)
     
-    # invoke the compiler
-    log(f"compiling with make {build_dict['additionalMakeOpts']} -j{build_dict['jobs']}")
-    subprocess.run(f"""cd '{FOLDER_PATH}/repo' &&
-                       make {build_dict['additionalMakeOpts']} -j{build_dict['jobs']}""", shell=True)
+    # add EXTERNAL_DATA=1 if using custom textures
+    if build_dict["customTextures"]:
+        # invoke the compiler
+        log(f"compiling with make EXTERNAL_DATA=1 {build_dict['additionalMakeOpts']} -j{build_dict['jobs']}")
+        subprocess.run(f"""cd '{FOLDER_PATH}/repo' &&
+                           make EXTERNAL_DATA=1 {build_dict['additionalMakeOpts']} -j{build_dict['jobs']}""", shell=True)
+    else:
+        # invoke the compiler
+        log(f"compiling with make {build_dict['additionalMakeOpts']} -j{build_dict['jobs']}")
+        subprocess.run(f"""cd '{FOLDER_PATH}/repo' &&
+                           make {build_dict['additionalMakeOpts']} -j{build_dict['jobs']}""", shell=True)
+
 
     # copy the texture pack if needed
     if build_dict["customTextures"]:
@@ -163,6 +171,7 @@ def build(build_dict: dict):
 
     # Add the new build entry to the builds list
     build_dict["playable"] = True
+    build_dict["repoRoot"] = os.path.join(FOLDER_PATH, "repo") # this is to allow for cding to the root of the repo to fix the libdiscord_game_sdk.so error
     build_dict["execPath"] = os.path.join(FOLDER_PATH, f"repo/build/{build_dict['romRegion']}_pc/sm64.{build_dict['romRegion']}.f3dex2e")
 
     # save the dict
