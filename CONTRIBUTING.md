@@ -59,7 +59,7 @@ The tools folder contains the tools (ALL MUST BE RAN FROM THE ROOT OF THE REPOSI
 #### **Arch GNU/Linux and derivatives**
 Install all dependencies (Can skip pip dependencies):
 
-`# pacman -S base-devel python python-pip python-gitpython python-pyqt6 sdl2 glew`
+`# pacman -S base-devel python python-pip python-requests python-gitpython python-pyqt6 sdl2 glew`
 
 #### **Debian GNU/Linux and derivatives**
 `# apt install build-essential git python3 libglew-dev libsdl2-dev`
@@ -77,4 +77,4 @@ Install all dependencies (Can skip pip dependencies):
 
 # Running
 
-Run `SM64LinuxLauncher-qt/launcher` within poetry.
+Run `SM64LinuxLauncher-qt/launcher` from within poetry.

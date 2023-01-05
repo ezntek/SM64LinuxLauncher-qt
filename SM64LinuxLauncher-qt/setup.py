@@ -8,7 +8,7 @@ def log(string: str):
     return f"LOG: {string}"
 
 def setup() -> None:
-    release_url = "https://github.com/tek967/SM64LinuxLauncher-qt/releases/download/testerelease/release.tar.gz"
+    release_url = "https://github.com/tek967/SM64LinuxLauncher-qt/releases/download/v0.1.0/release.tar.gz"
 
     # download the tarball
     print(f"LOG: downloading from {release_url}...")
@@ -20,12 +20,12 @@ def setup() -> None:
     shutil.unpack_archive("./sm64linuxlauncher-qt.tar.gz", "./", "gztar")
 
     # rename the folder
-    shutil.move("./dist", "SM64LinuxLauncher-qt")
+    shutil.move("./dist", os.path.join(os.environ['HOME'],"SM64LinuxLauncher-qt"))
 
     # make __main__.py executable
     print("LOG: making the program executable...")
-    mainpy = os.stat("./SM64LinuxLauncher-qt/__main__.py")
-    os.chmod("./SM64LinuxLauncher-qt/__main__.py", mainpy.st_mode | stat.S_IEXEC)
+    mainpy = os.stat(os.path.join(os.environ['HOME'], "./SM64LinuxLauncher-qt/__main__.py"))
+    os.chmod(os.path.join(os.environ['HOME'], "./SM64LinuxLauncher-qt/__main__.py"), mainpy.st_mode | stat.S_IEXEC)
 
     # clean up
     print("LOG: tidyinp up...")
