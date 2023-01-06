@@ -409,6 +409,6 @@ class BuildNewDialog(QtWidgets.QDialog):
             self.additional_make_opts
         ),))
 
-        build_process.run()
+        build_process.start()
 
         return

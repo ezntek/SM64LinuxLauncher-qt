@@ -18,6 +18,7 @@
 
 
 import json
+import threading
 import os
 import git.repo
 import shutil
@@ -188,7 +189,8 @@ def build(build_dict: dict):
         build_succeeded_dialog.exec()
         if build_succeeded_dialog.dialog_dismissed:
             if build_succeeded_dialog.exec_now:
-                subprocess.run(build_dict["execPath"])
+                game_thread = threading.Thread(target=subprocess.run, args=(f'cd \'{build_dict["repoRoot"]}\'; \'{build_dict["execPath"]}\'',), kwargs={"shell":True,})
+                game_thread.start()
                 build_succeeded_dialog.close()
                 break
             
