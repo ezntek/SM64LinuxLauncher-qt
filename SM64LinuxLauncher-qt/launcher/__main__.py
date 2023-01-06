@@ -46,12 +46,12 @@ class MainWindow(QtWidgets.QMainWindow):
                 "./res/repos/repos.json")) as r: # get relative path
             self.repos: dict[str, dict[str, str]] = json.loads(r.read())
 
-        self.ui.available_builds_list.addItems(self.repos.keys())      
-        self.ui.available_builds_list.setCurrentRow(0)  
+        self.ui.available_repos_list.addItems(self.repos.keys())
+        self.ui.available_repos_list.setCurrentRow(0)
 
     def setup_actions(self):
-        self.ui.action_quit.triggered.connect(self.close) # connect the quit action
-        self.ui.action_about.triggered.connect(self.about_dialog)
+        self.ui.actionQuit.triggered.connect(self.close) # connect the quit action
+        self.ui.actionAbout.triggered.connect(self.about_dialog)
 
     def refresh_builds(self):
         try:
@@ -71,7 +71,6 @@ class MainWindow(QtWidgets.QMainWindow):
         except FileNotFoundError:
             os.mkdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), "./builds"))
 
-    # Slots
     def about_dialog(self):
         d = QtWidgets.QDialog(parent=None)
         u = Ui_AboutDialog()
@@ -83,13 +82,14 @@ class MainWindow(QtWidgets.QMainWindow):
         d.exec()
         d.close()
 
-    def build_new(self):
-        selected_build = self.ui.available_builds_list.currentItem().text()
+    # slots
+    def b_build_new(self):
+        selected_build = self.ui.available_repos_list.currentItem().text()
         d = BuildNewDialog(self.repos[selected_build]) # pass in the selected build
         d.exec()
         self.refresh_builds()
      
-    def play_selected(self):
+    def b_play_build(self):
         # load the build.json
         try:
             with open(os.path.join(
@@ -104,6 +104,18 @@ class MainWindow(QtWidgets.QMainWindow):
                 
         except IndexError or AttributeError:
             pass
+    
+    def b_view_buildjson(self):
+        print("Slot got view build.json")
+
+    def b_repo_info(self):
+        print("Slot got repository info")
+    
+    def b_build_info(self):
+        print("Slot got build info")
+
+    def b_delete_build(self):
+        print("Slot got delete build")
 
 # driver code
 

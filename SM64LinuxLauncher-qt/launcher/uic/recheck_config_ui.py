@@ -27,7 +27,7 @@ class Ui_RecheckConfigurationDialog(object):
         self.l_repo_display.setObjectName("l_repo_display")
         self.gridLayout.addWidget(self.l_repo_display, 1, 1, 1, 1)
         self.line_edit_custom_name = QtWidgets.QLineEdit(RecheckConfigurationDialog)
-        self.line_edit_custom_name.setReadOnly(True)
+        self.line_edit_custom_name.setReadOnly(False)
         self.line_edit_custom_name.setObjectName("line_edit_custom_name")
         self.gridLayout.addWidget(self.line_edit_custom_name, 4, 1, 1, 4)
         self.line_edit_texture_pack = QtWidgets.QLineEdit(RecheckConfigurationDialog)
