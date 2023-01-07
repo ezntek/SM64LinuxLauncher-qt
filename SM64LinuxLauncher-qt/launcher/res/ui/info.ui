@@ -14,26 +14,6 @@
    <string>Info</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="2">
-    <widget class="QLineEdit" name="custom_name">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="l_custom_name">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Custom Name (if set)</string>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="0">
     <widget class="QLabel" name="l_textures">
      <property name="font">
@@ -60,12 +40,18 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QLineEdit" name="repo_name">
-     <property name="readOnly">
-      <bool>true</bool>
+   <item row="0" column="1">
+    <spacer name="h_spacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="l_region">
@@ -77,6 +63,19 @@
      </property>
      <property name="text">
       <string>Region</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="l_custom_name">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Custom Name (if set)</string>
      </property>
     </widget>
    </item>
@@ -106,36 +105,57 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
+   <item row="6" column="3">
+    <widget class="QPushButton" name="b_ok">
+     <property name="text">
+      <string>Ok</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="2">
+    <widget class="QLineEdit" name="repo_name">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <widget class="QLineEdit" name="custom_name">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2">
     <widget class="QLineEdit" name="region">
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="3" column="2" colspan="2">
     <widget class="QLineEdit" name="textures">
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="4" column="2">
+   <item row="4" column="2" colspan="2">
     <widget class="QLineEdit" name="models">
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
+   <item row="5" column="2" colspan="2">
     <widget class="QLineEdit" name="exec_path">
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <spacer name="h_spacer">
+   <item row="6" column="2">
+    <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -150,5 +170,25 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>b_ok</sender>
+   <signal>clicked()</signal>
+   <receiver>InfoDialog</receiver>
+   <slot>b_ok()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>512</x>
+     <y>378</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>279</x>
+     <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>b_ok()</slot>
+ </slots>
 </ui>

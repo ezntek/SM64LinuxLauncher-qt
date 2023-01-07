@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "SM64LinuxLauncher-qt"))
         self.b_play.setText(_translate("MainWindow", "Play"))
         self.b_view_buildjson.setText(_translate("MainWindow", "View build.json"))
         self.b_info.setText(_translate("MainWindow", "Info"))

@@ -18,16 +18,24 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see https://www.gnu.org/licenses/.
 
+# core imports
 import threading
 import subprocess
 import json
 import os
 
+# PyQt imports
 from PyQt6 import QtWidgets
+from PyQt6 import QtCore
 from PyQt6.QtGui import QIcon
+
+# UI imports
 from uic.main_window_ui import Ui_MainWindow
 from uic.about_ui import Ui_AboutDialog
-from dialogs import BuildNewDialog
+from dialogs import (BuildNewDialog,
+                    JsonView,
+                    BuildInfo,
+                    RepoInfo)
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent: QtWidgets.QWidget | None = None) -> None:
@@ -106,13 +114,30 @@ class MainWindow(QtWidgets.QMainWindow):
             pass
     
     def b_view_buildjson(self):
-        print("Slot got view build.json")
+        try:
+            selected_build = self.ui.builds_list.currentItem().text()
+            d = JsonView(os.path.join(os.path.dirname(os.path.realpath(__file__)), f"./builds/{selected_build}/build.json"))
+            d.exec()
+        except OSError:
+            print("JSON Path Invalid!!")
+        except AttributeError:
+            print("Build does NOT EXIST!")
 
-    def b_repo_info(self):
-        print("Slot got repository info")
-    
     def b_build_info(self):
-        print("Slot got build info")
+        try:
+            selected_build = self.ui.builds_list.currentItem().text()
+            BuildInfo(os.path.join(os.path.dirname(os.path.realpath(__file__)), f"./builds/{selected_build}/build.json")).exec()
+        except OSError:
+            print("JSON Path Invalid?")
+        except AttributeError:
+            print("Build does NOT EXIST!")
+    
+    def b_repo_info(self):
+        selected_repo = self.ui.available_repos_list.currentItem().text()
+        try:
+            RepoInfo(self.repos[selected_repo]).exec()
+        except IndexError:
+            print("Cannot get selected index!")
 
     def b_delete_build(self):
         print("Slot got delete build")

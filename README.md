@@ -13,7 +13,8 @@ A rewrite of [SM64LinuxLauncher](https://github.com/Bloxxel64/SM64LinuxLauncher)
 * Allow the tool to be more extensible and more approachable by beginner Free Software/"Open Source" Software developers.
 
 ### **Currently Working on**:
-* Initial Bring-up
+* UI Refresh
+* `build.json` handling
 
 ### **Project TODO**:
 - [ ] DynOS pack support

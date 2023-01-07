@@ -19,6 +19,7 @@ class Ui_PlainTextView(object):
         font = QtGui.QFont()
         font.setFamily("Monospace")
         self.plainTextEdit.setFont(font)
+        self.plainTextEdit.setReadOnly(True)
         self.plainTextEdit.setPlainText("")
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.gridLayout.addWidget(self.plainTextEdit, 0, 0, 1, 2)

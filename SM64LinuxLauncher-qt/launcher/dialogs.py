@@ -17,6 +17,7 @@
 #    along with this program.  If not, see https://www.gnu.org/licenses/.
 
 import threading
+import json
 import os
 import build
 
@@ -27,6 +28,86 @@ from uic.build_new_ui import Ui_BuildNewDialog
 from uic.select_baserom_ui import Ui_BaseromSelectDialog
 from uic.flags_ui import Ui_BuildFlagsDialog
 from uic.recheck_config_ui import Ui_RecheckConfigurationDialog
+from uic.view_json_ui import Ui_PlainTextView
+from uic.info_ui import Ui_InfoDialog
+from uic.repo_info_ui import Ui_RepoInfoDialog
+
+class RepoInfo(QtWidgets.QDialog):
+    def __init__(self, repo_dict: dict, parent: QtWidgets.QWidget | None = None) -> None:
+        super().__init__(parent)
+
+        # setup UI
+        self.ui = Ui_RepoInfoDialog() 
+        self.ui.setupUi(self)
+
+        # data
+        self.repo_dict: dict = repo_dict
+        self.load_data()
+    
+    def load_data(self):
+        self.ui.repo_link.setText(self.repo_dict["repolink"])
+        self.ui.repo_name.setText(self.repo_dict["name"])
+        self.ui.repo_branch.setText(self.repo_dict["branchname"])
+
+    def b_ok(self):
+        self.close()
+
+class BuildInfo(QtWidgets.QDialog):
+    def __init__(self, json_path: str, parent: QtWidgets.QWidget | None = None) -> None:
+        super().__init__(parent)
+        # setupUI
+        self.ui = Ui_InfoDialog()
+        self.ui.setupUi(self)
+
+        # data
+        self.build: dict
+        self.build_json_path: str = json_path
+        self.load_data()
+    
+    def load_data(self):
+        try:
+            with open(self.build_json_path, "r+") as buildjson:
+                self.build = json.loads(buildjson.read())
+        except OSError:
+            print("Error loading the build.json!")
+            raise OSError
+
+        self.ui.repo_name.setText(self.build["repo"]["name"])
+        self.ui.custom_name.setText(self.build["customName"]) if self.build["customName"] != "" else None
+        self.ui.region.setText(self.build["romRegion"])
+        self.ui.textures.setText(str(self.build["customTextures"]))
+        self.ui.models.setText(str(self.build["customModels"]))
+        self.ui.exec_path.setText(self.build["execPath"])
+    
+    # slots
+    def b_ok(self):
+        self.close()
+
+class JsonView(QtWidgets.QDialog):
+    def __init__(self, json_path: str, parent: QtWidgets.QWidget | None = None) -> None:
+        super().__init__(parent)
+        # setup the UI
+        self.ui = Ui_PlainTextView()
+        self.ui.setupUi(self)
+
+        # data
+        self.text: str
+        self.path = json_path
+        self.init_json()
+
+    def init_json(self):
+        try:
+            with open(self.path, "r+") as jsonfile:
+                self.text = jsonfile.read()
+                self.ui.plainTextEdit.setPlainText(self.text)
+                self.setWindowTitle("View build.json")
+        except OSError:
+            print("The File Path is probably invalid!")
+            raise OSError
+    
+    # slots
+    def b_ok(self):
+        self.close()
 
 class BaseromSelectDialog(QtWidgets.QDialog):
     def __init__(self, parent: QtWidgets.QWidget | None = None) -> None:
