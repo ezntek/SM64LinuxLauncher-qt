@@ -31,7 +31,24 @@ from uic.recheck_config_ui import Ui_RecheckConfigurationDialog
 from uic.view_json_ui import Ui_PlainTextView
 from uic.info_ui import Ui_InfoDialog
 from uic.repo_info_ui import Ui_RepoInfoDialog
+from uic.confirm_delete_ui import Ui_ConfirmDeleteDialog
 
+class ConfirmDelete(QtWidgets.QDialog):
+    def __init__(self, parent: QtWidgets.QWidget | None = None) -> None:
+        super().__init__(parent)
+        self.ui = Ui_ConfirmDeleteDialog()
+        self.ui.setupUi(self)
+
+        # data
+        self.delete: bool
+    
+    def b_yes(self):
+        self.delete = True
+        self.close()
+    
+    def b_no(self):
+        self.delete = False
+        self.close()
 class RepoInfo(QtWidgets.QDialog):
     def __init__(self, repo_dict: dict, parent: QtWidgets.QWidget | None = None) -> None:
         super().__init__(parent)

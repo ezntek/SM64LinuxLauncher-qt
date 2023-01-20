@@ -34,19 +34,8 @@ class BuildSucceededDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_BuildSucceededDialog()
         self.ui.setupUi(self)
-
-        # data
-        self.dialog_dismissed = False
-        self.exec_now = False
     
-    def play_now(self):
-        self.dialog_dismissed = True
-        self.exec_now = True
-        self.close()
-    
-    def play_later(self):
-        self.dialog_dismissed = True
-        self.exec_now = False
+    def dismiss(self):
         self.close()
 
 # function definitions
@@ -115,12 +104,10 @@ def build(build_dict: dict):
     with open(os.path.join(FOLDER_PATH, "./build.json"), "w+") as buildjsonfile:
         buildjsonfile.write(parse_to_json(build_dict))
 
-    parse_to_json(build_dict)
-
     # clone the repository
     log(f"cloning from {build_dict['repo']['repolink']}")
     git.repo.Repo.clone_from(
-        build_dict["repo"]["repolink"],
+        f'{build_dict["repo"]["repolink"]}',
         os.path.join(FOLDER_PATH, "repo"),
         branch=build_dict["repo"]["branchname"],
         depth=1 # save disk space by only cloning the very latest
@@ -184,21 +171,7 @@ def build(build_dict: dict):
     # open the build succeeded dialog
 
     build_succeeded_dialog = BuildSucceededDialog(parent=None)
-    
-    while not build_succeeded_dialog.dialog_dismissed:
-        build_succeeded_dialog.exec()
-        if build_succeeded_dialog.dialog_dismissed:
-            if build_succeeded_dialog.exec_now:
-                game_thread = threading.Thread(target=subprocess.run, args=(f'cd \'{build_dict["repoRoot"]}\'; \'{build_dict["execPath"]}\'',), kwargs={"shell":True,})
-                game_thread.start()
-                build_succeeded_dialog.close()
-                break
-            
-            # break if not playing now
-            build_succeeded_dialog.close()
-            break
-
-    del build_succeeded_dialog
+    build_succeeded_dialog.exec()
 
     # exit
     return 

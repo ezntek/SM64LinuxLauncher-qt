@@ -18,11 +18,15 @@ A rewrite of [SM64LinuxLauncher](https://github.com/Bloxxel64/SM64LinuxLauncher)
 
 ### **Project TODO**:
 - [ ] DynOS pack support
+- [ ] OTA Update System
 - [ ] Intelligent detection for support of certain features
-- [ ] allow users to edit, rebuild and view build.jsons
+- [x] allow users view build.jsons
+- [ ] allow users to edit build.jsons and rebuild from new edits
+- [ ] make it less stand-out-ish against other system programs 
 - [ ] add more graphics
-- [ ] Refresh the UI (new one already planned)
-- [ ] Put on PyPI / AUR
+- [x] Refresh the UI (new one already planned)
+- [ ] `.desktop` files
+- [ ] Put on PyPI / AUR / Gentoo Overlay / PPA
 
 ### [Contributing](CONTRIBUTING.md)
 

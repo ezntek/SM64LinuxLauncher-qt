@@ -15,6 +15,9 @@
 │   │   ├── build.py
 │   │   ├── dialogs.py
 │   │   ├── __main__.py
+│   │   ├── builds
+│   │   │   └── dummy_build
+│   │   │       └── build.json
 │   │   ├── res
 │   │   │   ├── img
 │   │   │   │   └── (Images and other assets go here)
@@ -40,6 +43,8 @@ There are 3 files with active human-written code:
 The tools folder contains the tools (ALL MUST BE RAN FROM THE ROOT OF THE REPOSITORY)
 *  `builduis.py` will convert the `.ui` files to python classes (from `SM64LinuxLauncher-qt/launcher/res/ui/*` to `SM64LinuxLauncher-qt/launcher/uic/*`, run after saving a UI file)
 * `make_release.py` will make a release tarball.
+
+The `builds/dummy_build` is a dummy build (as the name suggests) for testing purposes.
 
 # Development Dependencies
 

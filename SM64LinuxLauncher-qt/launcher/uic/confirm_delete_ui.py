@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_ConfirmDeleteDialog(object):
     def setupUi(self, ConfirmDeleteDialog):
         ConfirmDeleteDialog.setObjectName("ConfirmDeleteDialog")
-        ConfirmDeleteDialog.resize(400, 300)
+        ConfirmDeleteDialog.resize(403, 226)
         self.gridLayout = QtWidgets.QGridLayout(ConfirmDeleteDialog)
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(ConfirmDeleteDialog)

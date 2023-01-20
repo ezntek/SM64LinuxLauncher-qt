@@ -22,6 +22,7 @@
 import threading
 import subprocess
 import json
+import shutil
 import os
 
 # PyQt imports
@@ -35,6 +36,7 @@ from uic.about_ui import Ui_AboutDialog
 from dialogs import (BuildNewDialog,
                     JsonView,
                     BuildInfo,
+                    ConfirmDelete,
                     RepoInfo)
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -121,7 +123,7 @@ class MainWindow(QtWidgets.QMainWindow):
         except OSError:
             print("JSON Path Invalid!!")
         except AttributeError:
-            print("Build does NOT EXIST!")
+            pass
 
     def b_build_info(self):
         try:
@@ -130,7 +132,7 @@ class MainWindow(QtWidgets.QMainWindow):
         except OSError:
             print("JSON Path Invalid?")
         except AttributeError:
-            print("Build does NOT EXIST!")
+            pass
     
     def b_repo_info(self):
         selected_repo = self.ui.available_repos_list.currentItem().text()
@@ -140,7 +142,14 @@ class MainWindow(QtWidgets.QMainWindow):
             print("Cannot get selected index!")
 
     def b_delete_build(self):
-        print("Slot got delete build")
+        try:
+            d = ConfirmDelete(parent=None)
+            d.exec()
+            if d.delete:
+                shutil.rmtree(os.path.join(os.path.dirname(os.path.realpath(__file__)), f"./builds/{self.ui.builds_list.currentItem().text()}"))
+                self.refresh_builds()        
+            del d
+        except AttributeError: pass
 
 # driver code
 

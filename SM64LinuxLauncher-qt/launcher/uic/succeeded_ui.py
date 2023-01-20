@@ -15,35 +15,25 @@ class Ui_BuildSucceededDialog(object):
         BuildSucceededDialog.resize(400, 300)
         self.gridLayout = QtWidgets.QGridLayout(BuildSucceededDialog)
         self.gridLayout.setObjectName("gridLayout")
-        self.pushButton_2 = QtWidgets.QPushButton(BuildSucceededDialog)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout.addWidget(self.pushButton_2, 3, 2, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.gridLayout.addItem(spacerItem, 1, 0, 1, 1)
         self.l_succeeded = QtWidgets.QLabel(BuildSucceededDialog)
         font = QtGui.QFont()
         font.setPointSize(24)
         self.l_succeeded.setFont(font)
         self.l_succeeded.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.l_succeeded.setObjectName("l_succeeded")
-        self.gridLayout.addWidget(self.l_succeeded, 0, 0, 1, 3)
-        self.l_playnow = QtWidgets.QLabel(BuildSucceededDialog)
-        self.l_playnow.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.l_playnow.setObjectName("l_playnow")
-        self.gridLayout.addWidget(self.l_playnow, 2, 0, 1, 3)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout.addItem(spacerItem, 1, 1, 1, 1)
-        self.later_button = QtWidgets.QPushButton(BuildSucceededDialog)
-        self.later_button.setObjectName("later_button")
-        self.gridLayout.addWidget(self.later_button, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.l_succeeded, 0, 0, 1, 2)
+        self.pushButton_2 = QtWidgets.QPushButton(BuildSucceededDialog)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.gridLayout.addWidget(self.pushButton_2, 1, 1, 1, 1)
 
         self.retranslateUi(BuildSucceededDialog)
-        self.later_button.clicked.connect(BuildSucceededDialog.play_later) # type: ignore
-        self.pushButton_2.clicked.connect(BuildSucceededDialog.play_now) # type: ignore
+        self.pushButton_2.clicked.connect(BuildSucceededDialog.dismiss) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(BuildSucceededDialog)
 
     def retranslateUi(self, BuildSucceededDialog):
         _translate = QtCore.QCoreApplication.translate
         BuildSucceededDialog.setWindowTitle(_translate("BuildSucceededDialog", "Build Suceeded!"))
-        self.pushButton_2.setText(_translate("BuildSucceededDialog", "Yes"))
         self.l_succeeded.setText(_translate("BuildSucceededDialog", "Build Succeeded!"))
-        self.l_playnow.setText(_translate("BuildSucceededDialog", "Would You like to play now?"))
-        self.later_button.setText(_translate("BuildSucceededDialog", "Later..."))
+        self.pushButton_2.setText(_translate("BuildSucceededDialog", "Dismiss"))

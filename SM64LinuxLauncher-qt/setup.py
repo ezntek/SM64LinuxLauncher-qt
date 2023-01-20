@@ -8,7 +8,7 @@ def log(string: str):
     return f"LOG: {string}"
 
 def setup() -> None:
-    release_url = "https://github.com/ezntek/SM64LinuxLauncher-qt/releases/download/v0.1.0/release.tar.gz"
+    release_url = "https://github.com/ezntek/SM64LinuxLauncher-qt/releases/download/v0.2.0/release.tar.gz"
 
     # download the tarball
     print(f"LOG: downloading from {release_url}...")
