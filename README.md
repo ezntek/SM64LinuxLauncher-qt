@@ -2,6 +2,10 @@
 
 A rewrite of [SM64LinuxLauncher](https://github.com/Bloxxel64/SM64LinuxLauncher) in `PyQt6` with minimal dependencies.
 
+# IMPORTANT NOTE!
+
+This project is really a prototype for an actual, more advanced builder with an API in Rust. It is in the works [here](https://github.com/ezntek/smbuilder). This project is now deprecated, try to not use it.
+
 ### **This project aims to:**
 * Bring more frequent changes and updates to the tool
 * Allow for better distribution
